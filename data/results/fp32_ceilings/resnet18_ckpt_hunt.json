@@ -1,0 +1,52 @@
+{
+  "rows": [
+    {
+      "tag": "p3_c100_officialnorm",
+      "acc": 52.75,
+      "miss": 0,
+      "path": "/content/drive/MyDrive/Paper5_DNN_Neurosim/weights/resnet18_cifar100_paper3.pth"
+    },
+    {
+      "tag": "p3_c100_norm05",
+      "acc": 72.93,
+      "miss": 0,
+      "path": "/content/drive/MyDrive/Paper5_DNN_Neurosim/weights/resnet18_cifar100_paper3.pth"
+    },
+    {
+      "tag": "p4_acc72_officialnorm",
+      "acc": 48.25,
+      "miss": 0,
+      "path": "/content/drive/MyDrive/NeuroSim15v_paper4/models/resnet18_cifar100_seed5678_acc72.pth"
+    },
+    {
+      "tag": "p4_acc72_norm05",
+      "acc": 72.26,
+      "miss": 0,
+      "path": "/content/drive/MyDrive/NeuroSim15v_paper4/models/resnet18_cifar100_seed5678_acc72.pth"
+    },
+    {
+      "tag": "p4_s5678_officialnorm",
+      "acc": 55.5,
+      "miss": 0,
+      "path": "/content/drive/MyDrive/NeuroSim15v_paper4/models/resnet18_cifar100_seed5678.pth"
+    },
+    {
+      "tag": "p4_s5678_norm05",
+      "acc": 78.02,
+      "miss": 0,
+      "path": "/content/drive/MyDrive/NeuroSim15v_paper4/models/resnet18_cifar100_seed5678.pth"
+    },
+    {
+      "tag": "p3_c10_norm05",
+      "acc": 90.04,
+      "miss": 0,
+      "path": "/content/drive/MyDrive/NeuroSim15v_paper3/models/resnet18_cifar10.pth"
+    }
+  ],
+  "best": {
+    "tag": "p3_c10_norm05",
+    "acc": 90.04,
+    "miss": 0,
+    "path": "/content/drive/MyDrive/NeuroSim15v_paper3/models/resnet18_cifar10.pth"
+  }
+}

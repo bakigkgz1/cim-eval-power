@@ -1,0 +1,9 @@
+{
+  "written_at_utc": "2026-09-05T01:42:11.423853+00:00",
+  "weight": "/content/drive/MyDrive/Paper5_DNN_Neurosim/weights/vgg8_cifar10.pth",
+  "top1": 90.19,
+  "seed": 1234,
+  "source": "p5_train_A",
+  "neurosim_comment_baseline": 89.66,
+  "note": "Not the official NeuroSim 89.66 ckpt. Repeat later with Paper-4 weight."
+}

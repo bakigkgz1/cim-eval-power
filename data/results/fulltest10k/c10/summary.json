@@ -1,0 +1,175 @@
+{
+  "lock": {
+    "gate": "G14",
+    "role": "C10 control at n=10000, same 256-train calib as G13c",
+    "does_not_retune": [
+      "G10_bins",
+      "G12_RATE_ZERO_on_512",
+      "G13c_3_OF_5_FAIL",
+      "G7_NO_PROXY",
+      "title"
+    ],
+    "does_not_ingest": "G13/G13b 50k-train calib bins",
+    "calib": "Subset(train, range(256)) \u2014 same as G12/G13c",
+    "g10_bins": "CLEAR_HOLD if CI_lo>=-1; CLEAR_FAIL if CI_hi<-1; else INSEP",
+    "c100_six": "G11 five + P4; 4 CLEAR_FAIL / 1 CLEAR_HOLD / 1 INSEP on 10k",
+    "does_not_run": [
+      "conv3_rho",
+      "word_rewrite",
+      "title_lock"
+    ],
+    "title_B_rule": "still withdrawn (seed 34 HOLD). Rate description waits on this cell."
+  },
+  "rows": {
+    "vgg8_p3": {
+      "tag": "vgg8_p3",
+      "acc_fp": 90.18999934196472,
+      "acc_5": 90.0600016117096,
+      "skipped": false,
+      "dpp": -0.13,
+      "jk_se": 0.08999511048935491,
+      "ci95": [
+        -0.30999999999999917,
+        0.0400000000000067
+      ],
+      "hurt": 47,
+      "helped": 34,
+      "p_mc": 0.18207674694084314,
+      "bin": "CLEAR_HOLD",
+      "dpp512": -0.1953125,
+      "fp512": 91.6015625,
+      "n": 10000,
+      "C": 10,
+      "in_dis": false,
+      "hygiene": true,
+      "wall_s": 790.1929161548615,
+      "slice_match": true
+    },
+    "vgg8_2nd": {
+      "tag": "vgg8_2nd",
+      "acc_fp": 90.31000137329102,
+      "acc_5": 90.18999934196472,
+      "skipped": false,
+      "dpp": -0.12,
+      "jk_se": 0.09797713994598536,
+      "ci95": [
+        -0.31999999999999806,
+        0.06999999999999229
+      ],
+      "hurt": 54,
+      "helped": 42,
+      "p_mc": 0.2614694362863877,
+      "bin": "CLEAR_HOLD",
+      "dpp512": -0.5859375,
+      "fp512": 91.015625,
+      "n": 10000,
+      "C": 10,
+      "in_dis": false,
+      "hygiene": true,
+      "wall_s": 791.696964263916,
+      "slice_match": true
+    },
+    "resnet_c10_p3": {
+      "tag": "resnet_c10_p3",
+      "acc_fp": 90.03999829292297,
+      "acc_5": 89.9399995803833,
+      "skipped": false,
+      "dpp": -0.1,
+      "jk_se": 0.10392343339209303,
+      "ci95": [
+        -0.30000000000000027,
+        0.10000000000000009
+      ],
+      "hurt": 59,
+      "helped": 49,
+      "p_mc": 0.3865726089882613,
+      "bin": "CLEAR_HOLD",
+      "dpp512": -0.9765625,
+      "fp512": 91.40625,
+      "n": 10000,
+      "C": 10,
+      "in_dis": false,
+      "hygiene": true,
+      "wall_s": 855.3072514533997,
+      "slice_match": true
+    },
+    "resnet_c10_5678": {
+      "tag": "resnet_c10_5678",
+      "acc_fp": 95.05000114440918,
+      "acc_5": 94.9899971485138,
+      "skipped": false,
+      "dpp": -0.06,
+      "jk_se": 0.08000175015587348,
+      "ci95": [
+        -0.21999999999999797,
+        0.09000000000000119
+      ],
+      "hurt": 35,
+      "helped": 29,
+      "p_mc": 0.5323087760278422,
+      "bin": "CLEAR_HOLD",
+      "dpp512": -0.1953125,
+      "fp512": 94.53125,
+      "n": 10000,
+      "C": 10,
+      "in_dis": false,
+      "hygiene": true,
+      "wall_s": 853.1848950386047,
+      "slice_match": true
+    }
+  },
+  "k_fail_c10": 0,
+  "k_hold_c10": 4,
+  "c100_10k": {
+    "s13": {
+      "dpp": -1.69,
+      "bin": "CLEAR_FAIL"
+    },
+    "s21": {
+      "dpp": -1.93,
+      "bin": "CLEAR_FAIL"
+    },
+    "s34": {
+      "dpp": -0.31,
+      "bin": "CLEAR_HOLD"
+    },
+    "s55": {
+      "dpp": -1.06,
+      "bin": "INSEP"
+    },
+    "s89": {
+      "dpp": -2.37,
+      "bin": "CLEAR_FAIL"
+    },
+    "P4": {
+      "dpp": -3.7,
+      "bin": "CLEAR_FAIL"
+    }
+  },
+  "fisher_table": [
+    [
+      4,
+      2
+    ],
+    [
+      0,
+      4
+    ]
+  ],
+  "fisher_greater": 0.07142857142857142,
+  "fisher_two": 0.0761904761904762,
+  "fisher_drop_insep_not_primary": 0.03968253968253967,
+  "wilson_c100": [
+    0.29998832134152864,
+    0.9032306674407831
+  ],
+  "wilson_c10": [
+    0.0,
+    0.48990002040399916
+  ],
+  "mw_p_less": 0.004761904761904762,
+  "cliffs_delta": -1.0,
+  "verdict": "G14_C10_ALL_HOLD",
+  "paper_sentence": "Four CIFAR-10 checkpoints are CLEAR_HOLD on the full test at matched 256 calib. C100 is 4/6 CLEAR_FAIL vs C10 0/4. Rate description is now same-power. Title B as a deterministic rule stays withdrawn (seed 34 HOLD).",
+  "hygiene": true
+}

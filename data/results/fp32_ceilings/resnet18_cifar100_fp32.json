@@ -1,0 +1,24 @@
+{
+  "written_at_utc": "2026-09-05T22:53:33.040498+00:00",
+  "note": "re-eval after deactivate; prior 52.6 was CIM leak",
+  "primary": "paper3",
+  "neurosim_comment_baseline": 75.59,
+  "rows": [
+    {
+      "tag": "paper3",
+      "path": "/content/drive/MyDrive/Paper5_DNN_Neurosim/weights/resnet18_cifar100_paper3.pth",
+      "top1": 52.75,
+      "n": 10000,
+      "n_missing": 0,
+      "conv1": "Conv2d"
+    },
+    {
+      "tag": "paper4",
+      "path": "/content/drive/MyDrive/Paper5_DNN_Neurosim/weights/resnet18_cifar100_paper4.pth",
+      "top1": 52.75,
+      "n": 10000,
+      "n_missing": 0,
+      "conv1": "Conv2d"
+    }
+  ]
+}

@@ -1,0 +1,151 @@
+{
+  "lock": {
+    "gate": "G13c",
+    "does_not_retune": [
+      "G10_bins",
+      "G12_RATE_ZERO_on_512",
+      "G7_NO_PROXY",
+      "title"
+    ],
+    "does_not_ingest": "G13/G13b 50k-train calib bins",
+    "calib": "Subset(train, range(256)) \u2014 same as G12",
+    "hygiene_s89": "test[:512] \u0394 must match G12 \u22122.734 within 0.50 pp or abort",
+    "g10_bins": "CLEAR_HOLD if CI_lo>=-1; CLEAR_FAIL if CI_hi<-1; else INSEP",
+    "does_not_run": [
+      "conv3_rho",
+      "redundancy",
+      "word_rewrite",
+      "population_title"
+    ]
+  },
+  "rows": {
+    "s89": {
+      "tag": "s89",
+      "acc_fp": 78.03000211715698,
+      "acc_5": 75.6600022315979,
+      "hygiene": true,
+      "skipped": true,
+      "dpp": -2.37,
+      "jk_se": 0.21105156781324547,
+      "ci95": [
+        -2.7800000000000047,
+        -1.959999999999995
+      ],
+      "hurt": 344,
+      "helped": 107,
+      "p_mc": 4.516570106766408e-30,
+      "bin": "CLEAR_FAIL",
+      "dpp512": -2.734375,
+      "fp512": 79.8828125
+    },
+    "s34": {
+      "tag": "s34",
+      "acc_fp": 77.67999768257141,
+      "acc_5": 77.36999988555908,
+      "in_dis": false,
+      "hygiene": true,
+      "wall_s": 853.6339337825775,
+      "skipped": false,
+      "dpp": -0.31,
+      "jk_se": 0.16153327613816923,
+      "ci95": [
+        -0.6200000000000094,
+        0.009999999999998899
+      ],
+      "hurt": 146,
+      "helped": 115,
+      "p_mc": 0.06311087240238795,
+      "bin": "CLEAR_HOLD",
+      "dpp512": -0.1953125,
+      "fp512": 76.5625
+    },
+    "s13": {
+      "tag": "s13",
+      "acc_fp": 77.57999897003174,
+      "acc_5": 75.8899986743927,
+      "in_dis": false,
+      "hygiene": true,
+      "wall_s": 853.1664929389954,
+      "skipped": false,
+      "dpp": -1.69,
+      "jk_se": 0.2030234268531222,
+      "ci95": [
+        -2.090000000000003,
+        -1.2900000000000023
+      ],
+      "hurt": 292,
+      "helped": 123,
+      "p_mc": 6.01551560249311e-17,
+      "bin": "CLEAR_FAIL",
+      "dpp512": -2.34375,
+      "fp512": 80.46875
+    },
+    "s21": {
+      "tag": "s21",
+      "acc_fp": 77.66000032424927,
+      "acc_5": 75.73000192642212,
+      "in_dis": false,
+      "hygiene": true,
+      "wall_s": 853.3726780414581,
+      "skipped": false,
+      "dpp": -1.93,
+      "jk_se": 0.2133824341559552,
+      "ci95": [
+        -2.3499999999999965,
+        -1.5100000000000002
+      ],
+      "hurt": 326,
+      "helped": 133,
+      "p_mc": 9.051345313167055e-20,
+      "bin": "CLEAR_FAIL",
+      "dpp512": -1.3671875,
+      "fp512": 77.734375
+    },
+    "s55": {
+      "tag": "s55",
+      "acc_fp": 77.31000185012817,
+      "acc_5": 76.2499988079071,
+      "in_dis": false,
+      "hygiene": true,
+      "wall_s": 854.5119824409485,
+      "skipped": false,
+      "dpp": -1.06,
+      "jk_se": 0.1977158292977969,
+      "ci95": [
+        -1.4499999999999957,
+        -0.6700000000000039
+      ],
+      "hurt": 249,
+      "helped": 143,
+      "p_mc": 9.570035165634569e-08,
+      "bin": "INSEP",
+      "dpp512": -1.7578125,
+      "fp512": 78.3203125
+    },
+    "P4": {
+      "tag": "P4",
+      "acc_fp": 78.02000045776367,
+      "acc_5": 74.32000041007996,
+      "in_dis": false,
+      "hygiene": true,
+      "wall_s": 854.2296776771545,
+      "skipped": false,
+      "dpp": -3.7,
+      "jk_se": 0.2546320556182497,
+      "ci95": [
+        -4.200000000000004,
+        -3.2200000000000006
+      ],
+      "hurt": 516,
+      "helped": 146,
+      "p_mc": 2.633341276640809e-49,
+      "bin": "CLEAR_FAIL",
+      "dpp512": -3.7109375,
+      "fp512": 78.125
+    }
+  },
+  "k_fail_g12_five": 3,
+  "verdict": "G13c_3_OF_5_FAIL",
+  "paper_sentence": "3/5 CLEAR_FAIL on the locked 200-ep recipe at n=10000 with G12's 256 calib. That is a full-test rate. G12 0/5 remains the 512-window statement.",
+  "hygiene": true
+}

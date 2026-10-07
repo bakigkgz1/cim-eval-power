@@ -1,0 +1,25 @@
+{
+  "gate": "E",
+  "network": "vgg8",
+  "ckpt": "vgg8_cifar10_paper3.pth",
+  "n_eval": 512,
+  "split": "CIFAR-10 test [0:512]",
+  "clip": "hardware=0, adc_bits=5, 2^5=32",
+  "c_stat": "median",
+  "c_scope": "per_sample",
+  "c_axis": "classes",
+  "rmse_match": "leftover_r_minus_c",
+  "z_sym": "iid_gaussian_then_per_sample_mean0_then_rescale",
+  "seeds": [
+    1234,
+    1235,
+    1236,
+    1237,
+    1238
+  ],
+  "rho_shift_ok": 0.5,
+  "acc_hold_pp": 1.0,
+  "outcome1": "rho<=0.50 AND z5 hold AND z_shift hold AND mean z_sym fail -> shift invariance isolated",
+  "outcome2": "z5, z_shift, mean z_sym all hold -> clamp small in logit space; cause unknown; no shift claim",
+  "outcome3": "rho>0.50 -> common-mode model rejected; VGG8 clamp-tolerant, reason unknown; no shift claim"
+}

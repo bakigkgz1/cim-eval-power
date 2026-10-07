@@ -1,0 +1,191 @@
+{
+  "lock": {
+    "gate": "G10",
+    "does_not_retune": [
+      "G4_DEPTH_location",
+      "G6_CKPT",
+      "G7_NO_PROXY",
+      "G8_MISS_point",
+      "G9_LOGGED",
+      "title_B_withdrawn",
+      "accuracy_inverse_withdrawn",
+      "seed_title_on_trial"
+    ],
+    "object": "paired \u0394 = 100*(acc_clip5 - acc_FP) on the locked 512 images",
+    "no_new_cim": true,
+    "missing": "VGG8 2nd ckpt has no saved logits; not invented",
+    "cut_pp": -1.0,
+    "bootstrap": {
+      "B": 10000,
+      "seed": 1234,
+      "ci": "percentile 95"
+    },
+    "jackknife": "delete-1 SE on \u0394",
+    "mcnemar": "exact two-sided binomial on discordant (hurt, helped)",
+    "clear_hold_if": "bootstrap CI lower bound >= -1.0",
+    "clear_fail_if": "bootstrap CI upper bound < -1.0",
+    "insep_if": "CI contains -1.0",
+    "seed_stands_if": "both resnet_c100_p4 and resnet_c100_acc72 are CLEAR_FAIL",
+    "seed_weak_if": "exactly one of those two is CLEAR_FAIL",
+    "seed_falls_if": "neither is CLEAR_FAIL",
+    "read_if_seed_stands": "Both 5678 files are below the line after uncertainty. Seed claim stands.",
+    "read_if_seed_weak": "One 5678 file is inseparable from the 1 pp line. Seed claim rests on a single CLEAR_FAIL (the full train). Do not write 'both miss' as a binary without the INSEP label.",
+    "read_if_seed_falls": "Neither 5678 file is a CLEAR_FAIL. The 1 pp line does not support a seed-specific miss. Narrow the title; do not claim seed tracking from \u0394.",
+    "does_not_run": [
+      "new_c100_seeds",
+      "redundancy",
+      "dncnn2",
+      "word_rewrite"
+    ]
+  },
+  "cut_pp": -1.0,
+  "rows": {
+    "vgg8_p3": {
+      "n": 512,
+      "acc_fp": 91.6015625,
+      "acc_5": 91.40625,
+      "dpp": -0.1953125,
+      "jackknife_se": 0.19531249999999534,
+      "ci95": [
+        -0.5859375,
+        0.0
+      ],
+      "boot_mean": -0.19294921875,
+      "mcnemar": {
+        "hurt": 1,
+        "helped": 0,
+        "both": 468,
+        "none": 43,
+        "p": 1.0
+      },
+      "bin": "CLEAR_HOLD",
+      "hygiene": true,
+      "locked_acc_fp": 91.602,
+      "locked_dpp": -0.195,
+      "path": "/content/drive/MyDrive/Paper5_DNN_Neurosim/results/gate_E_vgg8_primary/logits.pt"
+    },
+    "resnet_c10_p3": {
+      "n": 512,
+      "acc_fp": 91.40625,
+      "acc_5": 90.4296875,
+      "dpp": -0.9765625,
+      "jackknife_se": 0.5849173686495742,
+      "ci95": [
+        -2.1484375,
+        0.1953125
+      ],
+      "boot_mean": -0.97796875,
+      "mcnemar": {
+        "hurt": 7,
+        "helped": 2,
+        "both": 461,
+        "none": 42,
+        "p": 0.1796875
+      },
+      "bin": "INSEP",
+      "hygiene": true,
+      "locked_acc_fp": 91.406,
+      "locked_dpp": -0.977,
+      "path": "/content/drive/MyDrive/Paper5_DNN_Neurosim/results/gate_G1_resnet_cifar10/logits.pt"
+    },
+    "resnet_c10_5678": {
+      "n": 512,
+      "acc_fp": 94.53125,
+      "acc_5": 94.3359375,
+      "dpp": -0.1953125,
+      "jackknife_se": 0.33851177407668054,
+      "ci95": [
+        -0.9765625,
+        0.390625
+      ],
+      "boot_mean": -0.19201171875,
+      "mcnemar": {
+        "hurt": 2,
+        "helped": 1,
+        "both": 482,
+        "none": 27,
+        "p": 1.0
+      },
+      "bin": "CLEAR_HOLD",
+      "hygiene": true,
+      "locked_acc_fp": 94.531,
+      "locked_dpp": -0.195,
+      "path": "/content/drive/MyDrive/Paper5_DNN_Neurosim/results/gate_G5_c10_seed2/logits.pt"
+    },
+    "resnet_c100_p3": {
+      "n": 512,
+      "acc_fp": 74.8046875,
+      "acc_5": 75.0,
+      "dpp": 0.1953125,
+      "jackknife_se": 0.8060353347804103,
+      "ci95": [
+        -1.3671875,
+        1.7578125
+      ],
+      "boot_mean": 0.19884765625,
+      "mcnemar": {
+        "hurt": 8,
+        "helped": 9,
+        "both": 375,
+        "none": 120,
+        "p": 1.0
+      },
+      "bin": "INSEP",
+      "hygiene": true,
+      "locked_acc_fp": 74.805,
+      "locked_dpp": 0.195,
+      "path": "/content/drive/MyDrive/Paper5_DNN_Neurosim/results/gate_G6_c100_seed2/logits.pt"
+    },
+    "resnet_c100_p4": {
+      "n": 512,
+      "acc_fp": 78.125,
+      "acc_5": 74.4140625,
+      "dpp": -3.7109375,
+      "jackknife_se": 1.1110195181052278,
+      "ci95": [
+        -5.859375,
+        -1.5625
+      ],
+      "boot_mean": -3.71736328125,
+      "mcnemar": {
+        "hurt": 26,
+        "helped": 7,
+        "both": 374,
+        "none": 105,
+        "p": 0.0013187271542847157
+      },
+      "bin": "CLEAR_FAIL",
+      "hygiene": true,
+      "locked_acc_fp": 78.125,
+      "locked_dpp": -3.711,
+      "path": "/content/drive/MyDrive/Paper5_DNN_Neurosim/results/gate_F1_resnet/logits.pt"
+    },
+    "resnet_c100_acc72": {
+      "n": 512,
+      "acc_fp": 70.8984375,
+      "acc_5": 69.53125,
+      "dpp": -1.3671875,
+      "jackknife_se": 1.0140640641996235,
+      "ci95": [
+        -3.3203125,
+        0.5859375
+      ],
+      "boot_mean": -1.34953125,
+      "mcnemar": {
+        "hurt": 17,
+        "helped": 10,
+        "both": 346,
+        "none": 139,
+        "p": 0.24778856337070465
+      },
+      "bin": "INSEP",
+      "hygiene": true,
+      "locked_acc_fp": 70.898,
+      "locked_dpp": -1.367,
+      "path": "/content/drive/MyDrive/Paper5_DNN_Neurosim/results/gate_G8_acc72/logits.pt"
+    }
+  },
+  "verdict": "G10_SEED_WEAK",
+  "paper_sentence": "One 5678 file is inseparable from the 1 pp line. Seed claim rests on a single CLEAR_FAIL (the full train). Do not write 'both miss' as a binary without the INSEP label.",
+  "hygiene_all": true
+}

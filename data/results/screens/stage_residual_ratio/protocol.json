@@ -1,0 +1,38 @@
+{
+  "gate": "G4",
+  "does_not_retune": [
+    "G1_CLASS",
+    "G2_NOT_CLASS",
+    "G3_CONC"
+  ],
+  "metric": "rho_l = RMSE(a_5-a_FP) / RMS(a_FP) at each named stage",
+  "primary": "ResNet-18 C100 / C10 on the same stage names",
+  "stages": [
+    "conv1",
+    "conv2_x",
+    "conv3_x",
+    "conv4_x",
+    "conv5_x",
+    "avg_pool",
+    "fc"
+  ],
+  "last": "fc",
+  "body": [
+    "conv1",
+    "conv2_x",
+    "conv3_x",
+    "conv4_x",
+    "conv5_x",
+    "avg_pool"
+  ],
+  "head_if": "ratio(fc) >= 3 AND median(body ratios) <= 2",
+  "depth_if": "median(body ratios) >= 3",
+  "does_not_run": [
+    "second_resnet_c10_seed",
+    "adc4_resweep"
+  ],
+  "read_if_head": "difference concentrates at fc: output width. Class-count claim stands; images-per-class confound falls (that would spread through the body).",
+  "read_if_depth": "difference is already in the body: checkpoint, not C. Paper narrows to these two weights.",
+  "read_if_mid": "profile in between; report it; do not pick HEAD/DEPTH.",
+  "read_if_hygiene_fail": "FP/clip5 drifted vs G1/F1/E; do not read HEAD/DEPTH."
+}

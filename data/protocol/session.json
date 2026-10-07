@@ -1,0 +1,13 @@
+{
+  "written_at_utc": "2026-09-06T08:15:04.775423+00:00",
+  "next_cell": null,
+  "next_step": "Track A experiments closed. Write the note: claim rewrite, gate table, must-not-claim, two figures.",
+  "headline_so_far": "min-viable ADC: VGG8=5 (both ckpts), ResNet=6, U-Net=6, DnCNN=6, MSRResNet=6. ADC=5: VGG8 holds on two ckpts (\u22120.20 / \u22120.59 pp); ResNet \u22123.7 pp; U-Net \u22120.30 mIoU; DnCNN \u221220 dB (full \u221224 dB); SR \u221224.6 dB. Pixel argmax \u2260 image argmax. 6-bit floor is clamp. Do not claim classification=5 vs dense=6. Do not claim 128x128 tiling.",
+  "track_A_done": [
+    "three-tier ADC=5",
+    "hw1=clamp",
+    "full-image DnCNN",
+    "error map no tiling",
+    "VGG8 second ckpt"
+  ]
+}

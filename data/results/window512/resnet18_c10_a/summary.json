@@ -1,0 +1,47 @@
+{
+  "lock": {
+    "gate": "G1",
+    "does_not_retune": [
+      "F1_MID",
+      "F1b_SPLIT"
+    ],
+    "network": "resnet18",
+    "ckpt": "resnet18_cifar10.pth",
+    "n_eval": 512,
+    "split": "CIFAR-10 test [0:512]",
+    "classes": 10,
+    "norm": [
+      0.5,
+      0.5,
+      0.5
+    ],
+    "clip": "hardware=0, adc_bits=5, 2^5=32",
+    "metric": "RMSE of (z_5-z_FP) on FP top-1/top-2, one scalar over N\u00d72",
+    "ratio": "rmse_nx2(ResNet-C10) / rmse_nx2(VGG8)",
+    "does_not_compute": [
+      "G2_margins",
+      "G3_class_flips"
+    ],
+    "hygiene_fp_min": 85.0,
+    "hygiene_C": 10,
+    "ratio_class_le": 2.0,
+    "ratio_arch_ge": 3.0,
+    "title_if_class": "Class Count Sets Partial-Sum Clip Tolerance: Why a CIFAR-10 Bit Budget Fails on CIFAR-100",
+    "title_if_arch": "Architecture, Not Task Type, Sets Partial-Sum Clip Tolerance in Resistive Crossbar Inference",
+    "read_if_hygiene_fail": "ckpt/norm/C drifted; G1 not comparable; do not read CLASS/ARCH",
+    "read_if_class": "C=10 matched bite vs VGG8; F1b 3.18\u00d7 was class count, not ResNet. Next G2 then G3. Title B.",
+    "read_if_arch": "C=10 still a large decision-pair bite vs VGG8; F1b 3.18\u00d7 was architecture. Next G2 then G3. Title A.",
+    "read_if_mid": "ratio in (2,3); both axes. Report three N\u00d72 RMSEs. Do not pick title A or B. Next G2 then G3."
+  },
+  "acc_fp": 91.40625,
+  "acc_5": 90.4296875,
+  "dpp": -0.9765625,
+  "resnet_c10": {
+    "rmse_nxc": 0.1899418979883194,
+    "rmse_nx2": 0.28621572256088257
+  },
+  "ratio_vs_vgg8": 0.48726623407131336,
+  "ratio_vs_resnet_c100": 0.15300972577758043,
+  "verdict": "G1_CLASS",
+  "paper_sentence": "C=10 matched bite vs VGG8; F1b 3.18\u00d7 was class count, not ResNet. Next G2 then G3. Title B."
+}

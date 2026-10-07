@@ -1,0 +1,230 @@
+{
+  "closed_at_utc": "2026-09-06T09:52:56.563265+00:00",
+  "lock": {
+    "gate": "G4",
+    "does_not_retune": [
+      "G1_CLASS",
+      "G2_NOT_CLASS",
+      "G3_CONC"
+    ],
+    "metric": "rho_l = RMSE(a_5-a_FP) / RMS(a_FP) at each named stage",
+    "primary": "ResNet-18 C100 / C10 on the same stage names",
+    "stages": [
+      "conv1",
+      "conv2_x",
+      "conv3_x",
+      "conv4_x",
+      "conv5_x",
+      "avg_pool",
+      "fc"
+    ],
+    "last": "fc",
+    "body": [
+      "conv1",
+      "conv2_x",
+      "conv3_x",
+      "conv4_x",
+      "conv5_x",
+      "avg_pool"
+    ],
+    "head_if": "ratio(fc) >= 3 AND median(body ratios) <= 2",
+    "depth_if": "median(body ratios) >= 3",
+    "does_not_run": [
+      "second_resnet_c10_seed",
+      "adc4_resweep"
+    ],
+    "read_if_head": "difference concentrates at fc: output width. Class-count claim stands; images-per-class confound falls (that would spread through the body).",
+    "read_if_depth": "difference is already in the body: checkpoint, not C. Paper narrows to these two weights.",
+    "read_if_mid": "profile in between; report it; do not pick HEAD/DEPTH.",
+    "read_if_hygiene_fail": "FP/clip5 drifted vs G1/F1/E; do not read HEAD/DEPTH."
+  },
+  "nets": {
+    "vgg8_c10": {
+      "acc_fp": 91.6015625,
+      "acc_5": 91.40625,
+      "dpp": -0.1953125,
+      "hygiene": true,
+      "layers": {
+        "layers.0": {
+          "rmse": 0.0030367011839067845,
+          "rms_fp": 0.3064537712890568,
+          "rho": 0.009909165650444786,
+          "numel": 67108864
+        },
+        "layers.2": {
+          "rmse": 0.043667175971167184,
+          "rms_fp": 0.7036354285149029,
+          "rho": 0.062059376491788346,
+          "numel": 67108864
+        },
+        "layers.4": {
+          "rmse": 0.03105583932053474,
+          "rms_fp": 0.40466466762411973,
+          "rho": 0.0767446278492036,
+          "numel": 16777216
+        },
+        "layers.5": {
+          "rmse": 0.08412324074781453,
+          "rms_fp": 1.073964264809681,
+          "rho": 0.07832964606389595,
+          "numel": 33554432
+        },
+        "layers.7": {
+          "rmse": 0.12835159899472992,
+          "rms_fp": 1.7475577197481726,
+          "rho": 0.07344627164201804,
+          "numel": 33554432
+        },
+        "layers.9": {
+          "rmse": 0.050148788617603794,
+          "rms_fp": 0.48550737641152514,
+          "rho": 0.10329150709977421,
+          "numel": 8388608
+        },
+        "layers.10": {
+          "rmse": 0.0745100841850311,
+          "rms_fp": 1.3079350080274517,
+          "rho": 0.05696772678131974,
+          "numel": 16777216
+        },
+        "layers.12": {
+          "rmse": 0.05994047671265437,
+          "rms_fp": 0.8380851364220814,
+          "rho": 0.07152074903577194,
+          "numel": 16777216
+        },
+        "layers.14": {
+          "rmse": 0.02146760397047119,
+          "rms_fp": 0.20894814644061452,
+          "rho": 0.1027412989115581,
+          "numel": 4194304
+        },
+        "classifier.0": {
+          "rmse": 0.03124751493611139,
+          "rms_fp": 0.5192860548172803,
+          "rho": 0.06017399205358281,
+          "numel": 524288
+        },
+        "classifier.2": {
+          "rmse": 0.3334151143856927,
+          "rms_fp": 6.402930680952608,
+          "rho": 0.052072266747715014,
+          "numel": 5120
+        }
+      }
+    },
+    "resnet_c10": {
+      "acc_fp": 91.40625,
+      "acc_5": 90.4296875,
+      "dpp": -0.9765625,
+      "hygiene": true,
+      "layers": {
+        "conv1": {
+          "rmse": 0.0017964538903615763,
+          "rms_fp": 0.2208624413511551,
+          "rho": 0.00813381342419079,
+          "numel": 33554432
+        },
+        "conv2_x": {
+          "rmse": 0.029657348174892555,
+          "rms_fp": 0.29390149447354735,
+          "rho": 0.10090914382050503,
+          "numel": 33554432
+        },
+        "conv3_x": {
+          "rmse": 0.0272636191735098,
+          "rms_fp": 0.2495565866321435,
+          "rho": 0.10924824522342692,
+          "numel": 16777216
+        },
+        "conv4_x": {
+          "rmse": 0.01737852462139624,
+          "rms_fp": 0.1517423217049278,
+          "rho": 0.11452655018149677,
+          "numel": 8388608
+        },
+        "conv5_x": {
+          "rmse": 0.017826346493984235,
+          "rms_fp": 0.31477340497786027,
+          "rho": 0.05663231458591001,
+          "numel": 4194304
+        },
+        "avg_pool": {
+          "rmse": 0.013649826244885458,
+          "rms_fp": 0.2836911054566934,
+          "rho": 0.048115101186946306,
+          "numel": 262144
+        },
+        "fc": {
+          "rmse": 0.1899419025767689,
+          "rms_fp": 3.7806178423624113,
+          "rho": 0.05024096867142728,
+          "numel": 5120
+        }
+      }
+    },
+    "resnet_c100": {
+      "acc_fp": 78.125,
+      "acc_5": 74.4140625,
+      "dpp": -3.7109375,
+      "hygiene": true,
+      "layers": {
+        "conv1": {
+          "rmse": 0.0011273761707112971,
+          "rms_fp": 0.13278792450623783,
+          "rho": 0.008490050393538139,
+          "numel": 33554432
+        },
+        "conv2_x": {
+          "rmse": 0.24127636297034524,
+          "rms_fp": 0.2067538288677895,
+          "rho": 1.1669740980933971,
+          "numel": 33554432
+        },
+        "conv3_x": {
+          "rmse": 1.2322835958900469,
+          "rms_fp": 0.1601718687446113,
+          "rho": 7.693508264268814,
+          "numel": 16777216
+        },
+        "conv4_x": {
+          "rmse": 0.27338368737344293,
+          "rms_fp": 0.10511090373271958,
+          "rho": 2.6009070197761255,
+          "numel": 8388608
+        },
+        "conv5_x": {
+          "rmse": 0.32655170479120227,
+          "rms_fp": 0.5406728641663678,
+          "rho": 0.603972802102235,
+          "numel": 4194304
+        },
+        "avg_pool": {
+          "rmse": 0.12058927028096332,
+          "rms_fp": 0.499449249176013,
+          "rho": 0.24144449206783358,
+          "numel": 262144
+        },
+        "fc": {
+          "rmse": 0.7293750640318319,
+          "rms_fp": 1.651128368648316,
+          "rho": 0.4417434028033383,
+          "numel": 51200
+        }
+      }
+    }
+  },
+  "ratios": {
+    "conv1": 1.0437970421460447,
+    "conv2_x": 11.564602115435495,
+    "conv3_x": 70.42225940137149,
+    "conv4_x": 22.71007915329956,
+    "conv5_x": 10.664808714219532,
+    "avg_pool": 5.018060569585538,
+    "fc": 8.792493745339822
+  },
+  "median_body_ratio": 11.114705414827514,
+  "fc_ratio": 8.792493745339822,
+  "verdict": "G4_DEPTH",
+  "paper_sentence": "difference is already in the body: checkpoint, not C. Paper narrows to these two weights."
+}

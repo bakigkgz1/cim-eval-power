@@ -1,0 +1,56 @@
+{
+  "lock": {
+    "gate": "G13_COST_PROBE",
+    "does_not_retune": [
+      "G10_bins",
+      "G12_RATE_ZERO",
+      "G7_NO_PROXY",
+      "title"
+    ],
+    "weight": "resnet18_cifar100_seed89.pth",
+    "n": 10000,
+    "why_this_seed": "G12 closest INSEP to CLEAR_FAIL; one file decides cost",
+    "g10_bins": "CLEAR_HOLD if CI_lo>=-1; CLEAR_FAIL if CI_hi<-1; else INSEP",
+    "read": "This cell measures wall time and logs one full-test interval. It does not rewrite the G12 rate. It does not open a population title.",
+    "does_not_run": [
+      "other_seeds",
+      "conv3_rho",
+      "redundancy",
+      "word_rewrite"
+    ]
+  },
+  "hash12": "adbc5f5358ca",
+  "acc_fp": 78.03000211715698,
+  "acc_5": 70.63000202178955,
+  "hygiene": true,
+  "in_dis": false,
+  "dpp": -7.4,
+  "jk_se": 0.3242445272496578,
+  "ci95": [
+    -8.020000000000005,
+    -6.779999999999998
+  ],
+  "hurt": 923,
+  "helped": 183,
+  "p_mc": 2.816722669610637e-119,
+  "bin": "CLEAR_FAIL",
+  "time_s": {
+    "calib256": 66.22703266143799,
+    "first512": 42.99943518638611,
+    "eval10k": 853.5200848579407,
+    "wall": 924.3238956928253
+  },
+  "project_min": {
+    "n1": 15.405398261547088,
+    "n3": 46.21619478464127,
+    "n6": 92.43238956928253
+  },
+  "g12_512": {
+    "dpp": -2.734,
+    "ci": [
+      -4.688,
+      -0.781
+    ],
+    "bin": "INSEP"
+  }
+}

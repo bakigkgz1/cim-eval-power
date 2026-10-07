@@ -1,0 +1,154 @@
+{
+  "lock": {
+    "gate": "G13b",
+    "does_not_retune": [
+      "G10_bins",
+      "G12_RATE_ZERO_on_512",
+      "G7_NO_PROXY",
+      "title"
+    ],
+    "s89_10k": "CLEAR_FAIL \u22127.40 pp; locked; skip",
+    "sample": "G12 remaining four on 10k, then P4; 512 rate stays 0/5",
+    "g10_bins": "CLEAR_HOLD if CI_lo>=-1; CLEAR_FAIL if CI_hi<-1; else INSEP",
+    "cost": "G13 probe 15.4 min/ckpt on T4",
+    "does_not_run": [
+      "conv3_rho",
+      "redundancy",
+      "word_rewrite",
+      "population_title"
+    ]
+  },
+  "diag": {
+    "ncls512": 100,
+    "nclsall": 100,
+    "dpp512": -8.203125,
+    "dpp_rest": -7.356661045531188
+  },
+  "g13_89": {
+    "dpp": -7.4,
+    "ci": [
+      -8.02,
+      -6.78
+    ],
+    "bin": "CLEAR_FAIL",
+    "n": 10000
+  },
+  "rows": {
+    "s34": {
+      "tag": "s34",
+      "acc_fp": 77.67999768257141,
+      "acc_5": 75.23000240325928,
+      "in_dis": false,
+      "hygiene": true,
+      "wall_s": 921.6766667366028,
+      "skipped": false,
+      "dpp": -2.45,
+      "jk_se": 0.2559419868447946,
+      "ci95": [
+        -2.949999999999997,
+        -1.9399999999999973
+      ],
+      "hurt": 453,
+      "helped": 208,
+      "p_mc": 7.788362414530165e-22,
+      "bin": "CLEAR_FAIL"
+    },
+    "s13": {
+      "tag": "s13",
+      "acc_fp": 77.57999897003174,
+      "acc_5": 75.92999935150146,
+      "in_dis": false,
+      "hygiene": true,
+      "wall_s": 921.3397891521454,
+      "skipped": false,
+      "dpp": -1.65,
+      "jk_se": 0.21361721192666672,
+      "ci95": [
+        -2.069999999999994,
+        -1.2299999999999978
+      ],
+      "hurt": 312,
+      "helped": 147,
+      "p_mc": 1.0031764445496742e-14,
+      "bin": "CLEAR_FAIL"
+    },
+    "s21": {
+      "tag": "s21",
+      "acc_fp": 77.66000032424927,
+      "acc_5": 76.7300009727478,
+      "in_dis": false,
+      "hygiene": true,
+      "wall_s": 920.8115417957306,
+      "skipped": false,
+      "dpp": -0.93,
+      "jk_se": 0.18497819248000447,
+      "ci95": [
+        -1.2899999999999914,
+        -0.5600000000000049
+      ],
+      "hurt": 218,
+      "helped": 125,
+      "p_mc": 5.82656624328695e-07,
+      "bin": "INSEP"
+    },
+    "s55": {
+      "tag": "s55",
+      "acc_fp": 77.31000185012817,
+      "acc_5": 75.92999935150146,
+      "in_dis": false,
+      "hygiene": true,
+      "wall_s": 920.625688791275,
+      "skipped": false,
+      "dpp": -1.38,
+      "jk_se": 0.2112203148424418,
+      "ci95": [
+        -1.8000000000000016,
+        -0.9600000000000053
+      ],
+      "hurt": 293,
+      "helped": 155,
+      "p_mc": 6.862878096758261e-11,
+      "bin": "INSEP"
+    },
+    "P4": {
+      "tag": "P4",
+      "acc_fp": 78.02000045776367,
+      "acc_5": 74.40000176429749,
+      "in_dis": false,
+      "hygiene": true,
+      "wall_s": 920.6766221523285,
+      "skipped": false,
+      "dpp": -3.62,
+      "jk_se": 0.26925231601783023,
+      "ci95": [
+        -4.149999999999999,
+        -3.090000000000004
+      ],
+      "hurt": 550,
+      "helped": 188,
+      "p_mc": 5.410393173226542e-42,
+      "bin": "CLEAR_FAIL"
+    },
+    "s89": {
+      "tag": "s89",
+      "acc_fp": 78.03000211715698,
+      "acc_5": 70.63000202178955,
+      "hygiene": true,
+      "skipped": true,
+      "dpp": -7.4,
+      "jk_se": 0.3242445272496578,
+      "ci95": [
+        -8.020000000000005,
+        -6.779999999999998
+      ],
+      "hurt": 923,
+      "helped": 183,
+      "p_mc": 2.816722669610637e-119,
+      "bin": "CLEAR_FAIL"
+    }
+  },
+  "k_fail_g12_five": 3,
+  "verdict": "G13b_3_OF_5_FAIL",
+  "paper_sentence": "3/5 CLEAR_FAIL on the locked 200-ep recipe at n=10000. That is a full-test rate, not the G12 512 rate. The 512 window was a different estimand.",
+  "hygiene": true
+}

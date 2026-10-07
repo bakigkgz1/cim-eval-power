@@ -1,0 +1,65 @@
+{
+  "lock": {
+    "gate": "G11",
+    "does_not_retune": [
+      "G7_NO_PROXY",
+      "G10_SEED_WEAK",
+      "G10_bins",
+      "title_B_withdrawn",
+      "accuracy_inverse_withdrawn"
+    ],
+    "question": "Train five C100 seeds on one locked recipe. Rate comes after clip5 eval.",
+    "recipe": "SGD 0.1, wd 5e-4, momentum 0.9, MultiStep 100/150 \u03b3=0.1, 200 ep, 0.5-norm, crop+flip",
+    "not_identical_to": "Paper 4 seed 5678 was a 150-ep / 78.02% file; this is the G5 C10 recipe on C100",
+    "seeds": [
+      13,
+      21,
+      34,
+      55,
+      89
+    ],
+    "exclude": [
+      1234,
+      5678
+    ],
+    "this_cell": "TRAIN_ONLY",
+    "does_not_run": [
+      "cim_eval",
+      "redundancy",
+      "dncnn2",
+      "word_rewrite"
+    ]
+  },
+  "runs": [
+    {
+      "seed": 13,
+      "best_full": 77.58,
+      "weight": "/content/drive/MyDrive/Paper5_DNN_Neurosim/weights/resnet18_cifar100_seed13.pth",
+      "epochs": 200
+    },
+    {
+      "seed": 21,
+      "best_full": 77.66,
+      "weight": "/content/drive/MyDrive/Paper5_DNN_Neurosim/weights/resnet18_cifar100_seed21.pth",
+      "epochs": 200
+    },
+    {
+      "seed": 34,
+      "best_full": 77.68,
+      "weight": "/content/drive/MyDrive/Paper5_DNN_Neurosim/weights/resnet18_cifar100_seed34.pth",
+      "epochs": 200
+    },
+    {
+      "seed": 55,
+      "best_full": 77.31,
+      "weight": "/content/drive/MyDrive/Paper5_DNN_Neurosim/weights/resnet18_cifar100_seed55.pth",
+      "epochs": 200
+    },
+    {
+      "seed": 89,
+      "best_full": 78.03,
+      "weight": "/content/drive/MyDrive/Paper5_DNN_Neurosim/weights/resnet18_cifar100_seed89.pth",
+      "epochs": 200
+    }
+  ]
+}

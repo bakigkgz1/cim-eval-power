@@ -1,0 +1,44 @@
+{
+  "lock": {
+    "gate": "G9",
+    "does_not_retune": [
+      "G4_DEPTH_location",
+      "G5_HOLD",
+      "G6_CKPT",
+      "G7_NO_PROXY",
+      "G8_MISS",
+      "title_B_withdrawn"
+    ],
+    "question": "What is ResNet-18/CIFAR-10 \u0394 at 2^4 on the two locked seeds?",
+    "object": "table fill; not a title test",
+    "window": "512 CIFAR-10 test, 0.5-norm, calib 256 train, ADC=4, first layer on",
+    "logged": "report 512 FP / clip4 / dpp for both seeds; replace 'not re-swept'",
+    "does_not_run": [
+      "c100_adc4",
+      "word_rewrite_in_this_cell"
+    ]
+  },
+  "vgg8_adc4": {
+    "acc_fp": 91.602,
+    "acc_4": 9.57,
+    "dpp": -82.0
+  },
+  "runs": {
+    "p3": {
+      "weight": "/content/drive/MyDrive/Paper5_DNN_Neurosim/weights/resnet18_cifar10.pth",
+      "acc_fp": 91.40625,
+      "acc_4": 10.9375,
+      "dpp": -80.46875,
+      "hygiene": true,
+      "in_dis": false
+    },
+    "s5678": {
+      "weight": "/content/drive/MyDrive/Paper5_DNN_Neurosim/weights/resnet18_cifar10_seed5678.pth",
+      "acc_fp": 94.53125,
+      "acc_4": 10.9375,
+      "dpp": -83.59375,
+      "hygiene": true,
+      "in_dis": false
+    }
+  }
+}

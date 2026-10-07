@@ -1,0 +1,82 @@
+{
+  "closed_at_utc": "2026-09-06T09:01:34.112829+00:00",
+  "lock": {
+    "gate": "E",
+    "network": "vgg8",
+    "ckpt": "vgg8_cifar10_paper3.pth",
+    "n_eval": 512,
+    "split": "CIFAR-10 test [0:512]",
+    "clip": "hardware=0, adc_bits=5, 2^5=32",
+    "c_stat": "median",
+    "c_scope": "per_sample",
+    "c_axis": "classes",
+    "rmse_match": "leftover_r_minus_c",
+    "z_sym": "iid_gaussian_then_per_sample_mean0_then_rescale",
+    "seeds": [
+      1234,
+      1235,
+      1236,
+      1237,
+      1238
+    ],
+    "rho_shift_ok": 0.5,
+    "acc_hold_pp": 1.0,
+    "outcome1": "rho<=0.50 AND z5 hold AND z_shift hold AND mean z_sym fail -> shift invariance isolated",
+    "outcome2": "z5, z_shift, mean z_sym all hold -> clamp small in logit space; cause unknown; no shift claim",
+    "outcome3": "rho>0.50 -> common-mode model rejected; VGG8 clamp-tolerant, reason unknown; no shift claim"
+  },
+  "acc_fp": 91.6015625,
+  "acc_5": 91.40625,
+  "acc_shift": 91.6015625,
+  "acc_sym_mean": 91.09375,
+  "acc_sym_std": 0.5182226234930313,
+  "sym_draws": [
+    {
+      "seed": 1234,
+      "acc": 91.6015625,
+      "dpp": 0.0,
+      "hold": true,
+      "rmse_n": 0.34282243251800537
+    },
+    {
+      "seed": 1235,
+      "acc": 91.6015625,
+      "dpp": 0.0,
+      "hold": true,
+      "rmse_n": 0.34282246232032776
+    },
+    {
+      "seed": 1236,
+      "acc": 90.8203125,
+      "dpp": -0.78125,
+      "hold": true,
+      "rmse_n": 0.34282246232032776
+    },
+    {
+      "seed": 1237,
+      "acc": 90.234375,
+      "dpp": -1.3671875,
+      "hold": false,
+      "rmse_n": 0.34282243251800537
+    },
+    {
+      "seed": 1238,
+      "acc": 91.2109375,
+      "dpp": -0.390625,
+      "hold": true,
+      "rmse_n": 0.34282246232032776
+    }
+  ],
+  "rmse_r": 0.33341512084007263,
+  "rmse_leftover": 0.34282246232032776,
+  "rho": 1.0282151015123502,
+  "phi_energy": 0.05852585658431053,
+  "shift_model": false,
+  "holds": {
+    "z5": true,
+    "z_shift": true,
+    "z_sym_mean": true
+  },
+  "verdict": "OUTCOME3",
+  "paper_sentence": "rho>0.50 -> common-mode model rejected; VGG8 clamp-tolerant, reason unknown; no shift claim"
+}

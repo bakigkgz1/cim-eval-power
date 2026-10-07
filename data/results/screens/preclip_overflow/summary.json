@@ -1,0 +1,226 @@
+{
+  "hold_hash12": "bbb333da42d2",
+  "fail_hash12": "05f70b627f99",
+  "p_body_hold": 7.720568890340996e-06,
+  "p_body_fail": 1.061497139693481e-05,
+  "ratio_fail_over_hold": 1.374894978298157,
+  "hygiene": true,
+  "verdict": "G7_NO_PROXY",
+  "paper_sentence": "Body exceedance rates are not 2\u00d7 apart. The obvious physical candidate does not screen the miss. IV-G stands: clip tolerance has no cheap proxy.",
+  "lock": {
+    "gate": "G7",
+    "does_not_retune": [
+      "G4_DEPTH_location",
+      "G5_HOLD",
+      "G6_CKPT",
+      "title_B_withdrawn"
+    ],
+    "question": "On the unclipped path, does the failing C100 weight produce a distinctly higher rate of bit-sliced 1b\u00d71b MACs above 2^5=32?",
+    "object": "tensor entering CIM._adc_quant (pre-clamp matmul), hardware=0, ADC-off",
+    "not_the_object": "post-clip activations; layer residual \u03c1 (already G4)",
+    "window": "512 CIFAR-100 test, 0.5-norm, calib 256 train, first layer quantized",
+    "primary": "P(psum > 32) pooled over residual-body CIM convs (conv2_x\u2013conv5_x)",
+    "proxy_if": "P_fail >= 0.001 AND P_fail / max(P_hold, 1e-12) >= 2.0",
+    "noproxy_if": "otherwise",
+    "read_if_proxy": "Failing weight produces \u22652\u00d7 more body psums above 32. A cheap screen exists. IV-G softens: clip tolerance can be screened by pre-clip exceedance, not by top-1.",
+    "read_if_noproxy": "Body exceedance rates are not 2\u00d7 apart. The obvious physical candidate does not screen the miss. IV-G stands: clip tolerance has no cheap proxy.",
+    "read_if_hygiene_fail": "hash/FP/CIM drifted; do not read PROXY/NO_PROXY.",
+    "does_not_run": [
+      "acc72",
+      "adc4_c10",
+      "word_rewrite"
+    ]
+  },
+  "runs": {
+    "hold": {
+      "acc_fp": 74.8046875,
+      "in_dis": false,
+      "hygiene": true,
+      "stages": {
+        "conv1": {
+          "n": 2181171200,
+          "mean": 7.120123294310873,
+          "max": 27.0,
+          "p_gt16": 0.015839896932437033,
+          "p_gt32": 0.0,
+          "p_gt48": 0.0,
+          "p_gt64": 0.0
+        },
+        "conv2_x": {
+          "n": 78522163200,
+          "mean": 3.384672905547258,
+          "max": 56.0,
+          "p_gt16": 0.007900472245267945,
+          "p_gt32": 2.554551375375252e-05,
+          "p_gt48": 8.97835682652207e-09,
+          "p_gt64": 0.0
+        },
+        "conv3_x": {
+          "n": 69273255936,
+          "mean": 2.7270508833528955,
+          "max": 48.0,
+          "p_gt16": 0.0032698438082550936,
+          "p_gt32": 2.7626823283261243e-06,
+          "p_gt48": 0.0,
+          "p_gt64": 0.0
+        },
+        "conv4_x": {
+          "n": 69055283200,
+          "mean": 1.8802127654441363,
+          "max": 48.0,
+          "p_gt16": 0.00043643059015070404,
+          "p_gt32": 1.5361605236310145e-07,
+          "p_gt48": 0.0,
+          "p_gt64": 0.0
+        },
+        "conv5_x": {
+          "n": 69122654208,
+          "mean": 1.0161515216507815,
+          "max": 32.0,
+          "p_gt16": 1.3736220214328955e-05,
+          "p_gt32": 0.0,
+          "p_gt48": 0.0,
+          "p_gt64": 0.0
+        },
+        "avg_pool": {
+          "n": 0,
+          "mean": 0.0,
+          "max": 0.0,
+          "p_gt16": 0.0,
+          "p_gt32": 0.0,
+          "p_gt48": 0.0,
+          "p_gt64": 0.0
+        },
+        "fc": {
+          "n": 28131328,
+          "mean": 4.2383669551611645,
+          "max": 44.0,
+          "p_gt16": 0.04638899379368084,
+          "p_gt32": 0.0002988483160126674,
+          "p_gt48": 0.0,
+          "p_gt64": 0.0
+        },
+        "other": {
+          "n": 0,
+          "mean": 0.0,
+          "max": 0.0,
+          "p_gt16": 0.0,
+          "p_gt32": 0.0,
+          "p_gt48": 0.0,
+          "p_gt64": 0.0
+        },
+        "ALL": {
+          "n": 288182659072,
+          "mean": 2.3263394412031695,
+          "max": 56.0,
+          "p_gt16": 0.003170963630992421,
+          "p_gt32": 7.690552953938427e-06,
+          "p_gt48": 2.44636510146109e-09,
+          "p_gt64": 0.0
+        },
+        "BODY": {
+          "n": 285973356544,
+          "p_gt32": 7.720568890340996e-06,
+          "mean": 2.289588286201963,
+          "max": 56.0
+        }
+      },
+      "weight": "/content/drive/MyDrive/Paper5_DNN_Neurosim/weights/resnet18_cifar100_paper3.pth"
+    },
+    "fail": {
+      "acc_fp": 78.125,
+      "in_dis": false,
+      "hygiene": true,
+      "stages": {
+        "conv1": {
+          "n": 2181171200,
+          "mean": 7.066765619314981,
+          "max": 27.0,
+          "p_gt16": 0.015500483868483135,
+          "p_gt32": 0.0,
+          "p_gt48": 0.0,
+          "p_gt64": 0.0
+        },
+        "conv2_x": {
+          "n": 78522163200,
+          "mean": 3.561633907278805,
+          "max": 53.0,
+          "p_gt16": 0.008676074056502813,
+          "p_gt32": 3.5373261341837306e-05,
+          "p_gt48": 9.271267758451158e-09,
+          "p_gt64": 0.0
+        },
+        "conv3_x": {
+          "n": 69273255936,
+          "mean": 3.082422036034729,
+          "max": 48.0,
+          "p_gt16": 0.003996615277557957,
+          "p_gt32": 3.6811464475640264e-06,
+          "p_gt48": 0.0,
+          "p_gt64": 0.0
+        },
+        "conv4_x": {
+          "n": 69055283200,
+          "mean": 1.6628831719134851,
+          "max": 42.0,
+          "p_gt16": 0.00019990568947518268,
+          "p_gt32": 4.261802810186723e-08,
+          "p_gt48": 0.0,
+          "p_gt64": 0.0
+        },
+        "conv5_x": {
+          "n": 69122654208,
+          "mean": 0.9683762340574733,
+          "max": 37.0,
+          "p_gt16": 2.5427336668975615e-05,
+          "p_gt32": 9.548244458523905e-10,
+          "p_gt48": 0.0,
+          "p_gt64": 0.0
+        },
+        "avg_pool": {
+          "n": 0,
+          "mean": 0.0,
+          "max": 0.0,
+          "p_gt16": 0.0,
+          "p_gt32": 0.0,
+          "p_gt48": 0.0,
+          "p_gt64": 0.0
+        },
+        "fc": {
+          "n": 28131328,
+          "mean": 3.733619010094369,
+          "max": 44.0,
+          "p_gt16": 0.034504876556129875,
+          "p_gt32": 0.0001104462611932149,
+          "p_gt48": 0.0,
+          "p_gt64": 0.0
+        },
+        "other": {
+          "n": 0,
+          "mean": 0.0,
+          "max": 0.0,
+          "p_gt16": 0.0,
+          "p_gt32": 0.0,
+          "p_gt48": 0.0,
+          "p_gt64": 0.0
+        },
+        "ALL": {
+          "n": 288182659072,
+          "mean": 2.3959910460833407,
+          "max": 53.0,
+          "p_gt16": 0.0034993940483700084,
+          "p_gt32": 1.0544374910638898e-05,
+          "p_gt48": 2.5261755941328703e-09,
+          "p_gt64": 0.0
+        },
+        "BODY": {
+          "n": 285973356544,
+          "p_gt32": 1.061497139693481e-05,
+          "mean": 2.360234609346027,
+          "max": 53.0
+        }
+      },
+      "weight": "/content/drive/MyDrive/Paper5_DNN_Neurosim/weights/resnet18_cifar100_primary.pth"
+    }
+  }
+}

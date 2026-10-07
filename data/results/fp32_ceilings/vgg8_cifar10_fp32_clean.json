@@ -1,0 +1,24 @@
+{
+  "written_at_utc": "2026-09-05T05:45:02.079897+00:00",
+  "primary": "paper3",
+  "neurosim_comment_baseline": 89.66,
+  "acceptance_pp": 1.0,
+  "rows": [
+    {
+      "tag": "paper3",
+      "path": "/content/drive/MyDrive/Paper5_DNN_Neurosim/weights/vgg8_cifar10_paper3.pth",
+      "top1": 90.19,
+      "n": 10000,
+      "n_missing": 0,
+      "n_unexpected": 0
+    },
+    {
+      "tag": "p5_train_A",
+      "path": "/content/drive/MyDrive/Paper5_DNN_Neurosim/weights/vgg8_cifar10.pth",
+      "top1": 90.31,
+      "n": 10000,
+      "n_missing": 0,
+      "n_unexpected": 0
+    }
+  ]
+}

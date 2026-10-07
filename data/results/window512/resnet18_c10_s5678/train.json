@@ -1,0 +1,23 @@
+{
+  "best": 95.05,
+  "seed": 5678,
+  "epochs": 200,
+  "lock": {
+    "gate": "G5",
+    "does_not_retune": [
+      "G4_DEPTH",
+      "G1_CLASS_numbers"
+    ],
+    "title_B": "withdrawn",
+    "primary_hash12": "eaee3d52f979",
+    "if_second_ckpt": "eval clip5 dpp + N\u00d72 + 7-stage rho vs locked C10 primary",
+    "g5_hold_if": "dpp >= -1.0 AND N\u00d72 RMSE / VGG8_0.587 <= 2.0",
+    "g5_fail_if": "dpp < -1.0 OR N\u00d72 ratio vs VGG8 >= 3.0",
+    "body_note": "median body rho compared to locked C10 primary (not in the binary)",
+    "read_if_hold": "C10 hold replicates on a second seed. Carrier point is not one file.",
+    "read_if_fail": "second C10 seed does not hold. Carrier point was seed-specific.",
+    "read_if_mid": "report both; do not call HOLD/FAIL.",
+    "read_if_train_only": "no second ckpt; training seed 5678. Eval is the next cell after this finishes."
+  },
+  "weight": "/content/drive/MyDrive/Paper5_DNN_Neurosim/weights/resnet18_cifar10_seed5678.pth"
+}

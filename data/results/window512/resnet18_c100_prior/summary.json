@@ -1,0 +1,102 @@
+{
+  "weight": "/content/drive/MyDrive/Paper5_DNN_Neurosim/weights/resnet18_cifar100_paper3.pth",
+  "hash12": "bbb333da42d2",
+  "acc_fp": 74.8046875,
+  "acc_5": 75.0,
+  "dpp": 0.1953125,
+  "rmse_nx2": 0.9161204695701599,
+  "ratio_vs_vgg8": 1.5596433543758075,
+  "median_body_vs_g4_c10": 7.581530376745193,
+  "median_body_vs_g4_c100": 0.5913136708742217,
+  "layers": {
+    "conv1": {
+      "rmse": 0.0017646433074103743,
+      "rms_fp": 0.18819181258397472,
+      "rho": 0.009376833578362807,
+      "vs_g4_c10": 1.1576337751065193,
+      "vs_g4_c100": 1.1031568915720948,
+      "g4_c100_rms_fp": 0.1328
+    },
+    "conv2_x": {
+      "rmse": 0.06505908280117438,
+      "rms_fp": 0.26890667216679554,
+      "rho": 0.2419392656825562,
+      "vs_g4_c10": 2.3978123457141347,
+      "vs_g4_c100": 0.20731727993363855,
+      "g4_c100_rms_fp": 0.2068
+    },
+    "conv3_x": {
+      "rmse": 0.34331962012211764,
+      "rms_fp": 0.23369874548157563,
+      "rho": 1.4690691617306277,
+      "vs_g4_c10": 13.453014301562524,
+      "vs_g4_c100": 0.19094939386893192,
+      "g4_c100_rms_fp": 0.1602
+    },
+    "conv4_x": {
+      "rmse": 0.296839378422367,
+      "rms_fp": 0.1624081039439418,
+      "rho": 1.8277374786964244,
+      "vs_g4_c10": 15.962772739706763,
+      "vs_g4_c100": 0.7027326997179532,
+      "g4_c100_rms_fp": 0.1051
+    },
+    "conv5_x": {
+      "rmse": 0.4975187855260033,
+      "rms_fp": 0.6891693099761191,
+      "rho": 0.7219108255752757,
+      "vs_g4_c10": 12.754608225711586,
+      "vs_g4_c100": 1.1952165986345626,
+      "g4_c100_rms_fp": 0.5407
+    },
+    "avg_pool": {
+      "rmse": 0.07230316111838027,
+      "rms_fp": 0.6241286492043348,
+      "rho": 0.11584656658616033,
+      "vs_g4_c10": 2.408452527778801,
+      "vs_g4_c100": 0.47989464203049015,
+      "g4_c100_rms_fp": 0.4994
+    },
+    "fc": {
+      "rmse": 0.8728174437663891,
+      "rms_fp": 2.501958455683846,
+      "rho": 0.34885369170841285,
+      "vs_g4_c10": 6.94927672725922,
+      "vs_g4_c100": 0.789797807807138,
+      "g4_c100_rms_fp": 1.6511
+    }
+  },
+  "hygiene": true,
+  "verdict": "G6_CKPT",
+  "paper_sentence": "second C100 holds. The fail was seed-specific. Checkpoint-specific title stands.",
+  "lock": {
+    "gate": "G6",
+    "does_not_retune": [
+      "G4_DEPTH_location",
+      "G5_HOLD",
+      "G1_CLASS_numbers",
+      "title_B_withdrawn"
+    ],
+    "title_checkpoint_specific": "on trial \u2014 not locked",
+    "rho_already": "RMSE(a_5-a_FP) / RMS(a_FP); C100 conv3 rms_fp 0.160 < C10 0.250",
+    "primary_c100_hash12": "05f70b627f99",
+    "prefer_hash12": "bbb333da42d2",
+    "g6_task_if": "dpp < -1.0",
+    "g6_ckpt_if": "dpp >= -1.0",
+    "body_note": "median body rho vs G4-C10 reported, not in the binary",
+    "read_if_task": "second C100 also misses 1 pp. Not checkpoint-specific. Difference is C100 / this task's body, not one file. Title B does not return via output width.",
+    "read_if_ckpt": "second C100 holds. The fail was seed-specific. Checkpoint-specific title stands.",
+    "read_if_hygiene_fail": "ckpt/norm/CIM drifted; do not read TASK/CKPT.",
+    "does_not_run": [
+      "adc4_resweep",
+      "word_rewrite",
+      "title_lock"
+    ]
+  },
+  "f1_primary": {
+    "acc_fp": 78.125,
+    "acc_5": 74.414,
+    "dpp": -3.711,
+    "rmse_nx2": 1.871
+  }
+}

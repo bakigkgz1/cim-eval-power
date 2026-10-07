@@ -1,0 +1,93 @@
+{
+  "weight": "/content/drive/MyDrive/Paper5_DNN_Neurosim/weights/resnet18_cifar10_seed5678.pth",
+  "hash12": "4e7aa287c3aa",
+  "acc_fp": 94.53125,
+  "acc_5": 94.3359375,
+  "dpp": -0.1953125,
+  "rmse_nx2": 0.1927807331085205,
+  "ratio_vs_vgg8": 0.32819830931784877,
+  "median_body_vs_g4_c10": 0.7476672421662035,
+  "layers": {
+    "conv1": {
+      "rmse": 0.0016577656244568897,
+      "rms_fp": 0.1342240704715916,
+      "rho": 0.01235073276076629,
+      "rho_primary": 0.0081,
+      "vs_primary": 1.524781822316826
+    },
+    "conv2_x": {
+      "rmse": 0.01085583692069429,
+      "rms_fp": 0.16356865336074372,
+      "rho": 0.06636868799520042,
+      "rho_primary": 0.1009,
+      "vs_primary": 0.6577669771575859
+    },
+    "conv3_x": {
+      "rmse": 0.011189609671033945,
+      "rms_fp": 0.13780655894420402,
+      "rho": 0.08119794701182884,
+      "rho_primary": 0.1092,
+      "vs_primary": 0.7435709433317659
+    },
+    "conv4_x": {
+      "rmse": 0.007154394398658669,
+      "rms_fp": 0.07403359809320906,
+      "rho": 0.0966371293969964,
+      "rho_primary": 0.1145,
+      "vs_primary": 0.8439923964803179
+    },
+    "conv5_x": {
+      "rmse": 0.01132758014071035,
+      "rms_fp": 0.2711612348597026,
+      "rho": 0.04177433454516896,
+      "rho_primary": 0.0566,
+      "vs_primary": 0.7380624477945047
+    },
+    "avg_pool": {
+      "rmse": 0.009372064496240532,
+      "rms_fp": 0.25918444443701777,
+      "rho": 0.036159826322130835,
+      "rho_primary": 0.0481,
+      "vs_primary": 0.7517635410006411
+    },
+    "fc": {
+      "rmse": 0.11797333286672458,
+      "rms_fp": 3.140165726212282,
+      "rho": 0.03756914225321028,
+      "rho_primary": 0.0502,
+      "vs_primary": 0.7483892879125553
+    }
+  },
+  "hygiene": true,
+  "verdict": "G5_HOLD",
+  "paper_sentence": "C10 hold replicates on a second seed. Carrier point is not one file.",
+  "lock": {
+    "gate": "G5_eval",
+    "does_not_retune": [
+      "G4_DEPTH",
+      "G1_CLASS_numbers",
+      "title_B_withdrawn"
+    ],
+    "weight": "/content/drive/MyDrive/Paper5_DNN_Neurosim/weights/resnet18_cifar10_seed5678.pth",
+    "seed": 5678,
+    "train_best_full": 95.05,
+    "primary_hash12": "eaee3d52f979",
+    "g5_hold_if": "dpp >= -1.0 AND N\u00d72 RMSE / VGG8_0.587 <= 2.0",
+    "g5_fail_if": "dpp < -1.0 OR N\u00d72 ratio vs VGG8 >= 3.0",
+    "body_note": "median body rho vs locked C10 primary is reported, not in the binary",
+    "read_if_hold": "C10 hold replicates on a second seed. Carrier point is not one file.",
+    "read_if_fail": "second C10 seed does not hold. Carrier point was seed-specific.",
+    "read_if_mid": "report both; do not call HOLD/FAIL.",
+    "read_if_hygiene_fail": "ckpt/norm/CIM drifted; do not read HOLD/FAIL.",
+    "does_not_run": [
+      "adc4_resweep",
+      "word_rewrite"
+    ]
+  },
+  "g1_primary": {
+    "acc_fp": 91.406,
+    "acc_5": 90.43,
+    "dpp": -0.977,
+    "rmse_nx2": 0.286
+  }
+}

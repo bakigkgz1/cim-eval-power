@@ -1,0 +1,14 @@
+{
+  "written_at_utc": "2026-09-05T23:24:21.906749+00:00",
+  "weight": "/content/drive/MyDrive/Paper5_DNN_Neurosim/weights/resnet18_cifar100_primary.pth",
+  "norm": [
+    0.5,
+    0.5,
+    0.5
+  ],
+  "n_eval": 512,
+  "acc_fp": 78.125,
+  "accept": 77.125,
+  "min_viable_adc": 6,
+  "first_layer_quantized": true
+}

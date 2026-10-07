@@ -1,0 +1,104 @@
+{
+  "weight": "/content/drive/MyDrive/NeuroSim15v_paper4/models/resnet18_cifar100_seed5678_acc72.pth",
+  "hash12": "5832de175f4a",
+  "acc_fp": 70.8984375,
+  "acc_5": 69.53125,
+  "dpp": -1.3671875,
+  "rmse_nx2": 1.6769213676452637,
+  "ratio_vs_vgg8": 2.8548639111686485,
+  "median_body_vs_g4_c10": 17.15297150082654,
+  "median_body_vs_g4_fail_c100": 1.222593242967568,
+  "layers": {
+    "conv1": {
+      "rmse": 0.0020598832873164265,
+      "rms_fp": 0.2042261144597869,
+      "rho": 0.01008628741121169,
+      "vs_g4_c10": 1.245220668050826,
+      "vs_g4_c100": 1.1866220483778458
+    },
+    "conv2_x": {
+      "rmse": 0.32233849470306114,
+      "rms_fp": 0.33038282156528437,
+      "rho": 0.9756514977863834,
+      "vs_g4_c10": 9.669489571718367,
+      "vs_g4_c100": 0.836033845575307
+    },
+    "conv3_x": {
+      "rmse": 2.3689112821040514,
+      "rms_fp": 0.24465234462397686,
+      "rho": 9.682765500347013,
+      "vs_g4_c10": 88.67001373944152,
+      "vs_g4_c100": 1.2585644375572904
+    },
+    "conv4_x": {
+      "rmse": 1.162488510494138,
+      "rms_fp": 0.176223709300659,
+      "rho": 6.596663497252755,
+      "vs_g4_c10": 57.61278163539524,
+      "vs_g4_c100": 2.536300318064037
+    },
+    "conv5_x": {
+      "rmse": 0.9800792923666067,
+      "rms_fp": 0.7028563834059857,
+      "rho": 1.3944232641343044,
+      "vs_g4_c10": 24.636453429934708,
+      "vs_g4_c100": 2.3086477883018284
+    },
+    "avg_pool": {
+      "rmse": 0.1386360973138691,
+      "rms_fp": 0.6362675299576257,
+      "rho": 0.21788963099075956,
+      "vs_g4_c10": 4.52992995822785,
+      "vs_g4_c100": 0.9026082476833454
+    },
+    "fc": {
+      "rmse": 1.183026556326593,
+      "rms_fp": 2.6311064764825423,
+      "rho": 0.4496308176429828,
+      "vs_g4_c10": 8.956789196075354,
+      "vs_g4_c100": 1.0179552131378375
+    }
+  },
+  "hygiene": true,
+  "verdict": "G8_MISS",
+  "paper_sentence": "Early-stop of seed 5678 also misses 1 pp. Not a simple epoch switch. This seed's trajectory is already fragile. G7_NO_PROXY still stands.",
+  "lock": {
+    "gate": "G8",
+    "does_not_retune": [
+      "G4_DEPTH_location",
+      "G5_HOLD",
+      "G6_CKPT",
+      "G7_NO_PROXY",
+      "title_B_withdrawn"
+    ],
+    "weight": "resnet18_cifar100_seed5678_acc72.pth",
+    "hash12": "5832de175f4a",
+    "same_seed_as_fail": 5678,
+    "full_test_fp_paper4": 72.26,
+    "question": "Does the early-stop of the failing seed hold 2^5?",
+    "g8_hold_if": "dpp >= -1.0",
+    "g8_miss_if": "dpp < -1.0",
+    "body_note": "conv3 \u03c1 and median body vs G4-C10 reported, not in the binary",
+    "read_if_hold": "Same seed 5678: early-stop holds 2^5; the fully trained sibling misses. Training continuation created the miss. Do not read this as larger psums (G7_NO_PROXY). The knob is duration; the location is still the body.",
+    "read_if_miss": "Early-stop of seed 5678 also misses 1 pp. Not a simple epoch switch. This seed's trajectory is already fragile. G7_NO_PROXY still stands.",
+    "read_if_hygiene_fail": "hash/norm/CIM drifted; do not read HOLD/MISS.",
+    "does_not_run": [
+      "adc4_c10",
+      "word_rewrite"
+    ]
+  },
+  "fail_locked": {
+    "acc_fp": 78.125,
+    "acc_5": 74.414,
+    "dpp": -3.711,
+    "rmse_nx2": 1.871,
+    "conv3_rho": 7.69
+  },
+  "hold_locked": {
+    "acc_fp": 74.805,
+    "acc_5": 75.0,
+    "dpp": 0.195,
+    "rmse_nx2": 0.916,
+    "conv3_rho": 1.47
+  }
+}

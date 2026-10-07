@@ -1,0 +1,188 @@
+{
+  "lock": {
+    "gate": "G12",
+    "does_not_retune": [
+      "G7_NO_PROXY",
+      "G10_bins",
+      "G10_SEED_WEAK_on_old_files"
+    ],
+    "sample": "five G11 seeds, same recipe; P4/P3/acc72 not in the rate",
+    "g10_bins": "CLEAR_HOLD if CI_lo>=-1; CLEAR_FAIL if CI_hi<-1; else INSEP",
+    "rate": "n_CLEAR_FAIL / 5",
+    "read_if_zero_fail": "0/5 CLEAR_FAIL on this recipe. The Paper 4 5678 miss did not replicate here. Do not claim a seed failure rate. Recipe difference stays live.",
+    "read_if_some_fail": "k/5 CLEAR_FAIL on one locked recipe. That is a rate. G10_SEED_WEAK is the old three-file set; this cell is the matched sample.",
+    "rho_note": "Spearman conv3 \u03c1 vs \u0394 is reported; n=5, not a title lock",
+    "does_not_run": [
+      "redundancy",
+      "dncnn2",
+      "word_rewrite"
+    ]
+  },
+  "full_fp": {
+    "13": 77.58,
+    "21": 77.66,
+    "34": 77.68,
+    "55": 77.31,
+    "89": 78.03
+  },
+  "p4_locked": {
+    "dpp": -3.711,
+    "bin": "CLEAR_FAIL",
+    "conv3_rho": 7.69,
+    "recipe": "Paper4 150ep"
+  },
+  "rows": {
+    "13": {
+      "seed": 13,
+      "full_fp": 77.58,
+      "acc_fp": 80.46875,
+      "acc_5": 78.125,
+      "rho": {
+        "conv1": 0.009899271174109565,
+        "conv2_x": 0.5610563453820814,
+        "conv3_x": 2.502674519248348,
+        "conv4_x": 1.9646901325892394,
+        "conv5_x": 0.868771453104388,
+        "avg_pool": 0.17465742672868853,
+        "fc": 0.25771294029957914
+      },
+      "in_dis": false,
+      "hygiene": true,
+      "dpp": -2.34375,
+      "jk_se": 0.8681489811650994,
+      "ci95": [
+        -4.1015625,
+        -0.78125
+      ],
+      "hurt": 16,
+      "helped": 4,
+      "p_mc": 0.01181793212890625,
+      "bin": "INSEP"
+    },
+    "21": {
+      "seed": 21,
+      "full_fp": 77.66,
+      "acc_fp": 77.734375,
+      "acc_5": 76.3671875,
+      "rho": {
+        "conv1": 0.00920028318851995,
+        "conv2_x": 0.8223955485671833,
+        "conv3_x": 8.982289180666843,
+        "conv4_x": 3.5416387754857586,
+        "conv5_x": 1.1937542680013806,
+        "avg_pool": 0.2065421207811716,
+        "fc": 0.501412448237234
+      },
+      "in_dis": false,
+      "hygiene": true,
+      "dpp": -1.3671875,
+      "jk_se": 1.0510800040117603,
+      "ci95": [
+        -3.515625,
+        0.5859375
+      ],
+      "hurt": 18,
+      "helped": 11,
+      "p_mc": 0.26493089646101,
+      "bin": "INSEP"
+    },
+    "34": {
+      "seed": 34,
+      "full_fp": 77.68,
+      "acc_fp": 76.5625,
+      "acc_5": 76.3671875,
+      "rho": {
+        "conv1": 0.008355151424792569,
+        "conv2_x": 0.793836589705941,
+        "conv3_x": 4.2039258312229375,
+        "conv4_x": 1.7876580390690562,
+        "conv5_x": 0.7332604640756191,
+        "avg_pool": 0.11860611999392508,
+        "fc": 0.3157542552194006
+      },
+      "in_dis": false,
+      "hygiene": true,
+      "dpp": -0.1953125,
+      "jk_se": 0.9774793885518643,
+      "ci95": [
+        -2.1484375,
+        1.7578125
+      ],
+      "hurt": 13,
+      "helped": 12,
+      "p_mc": 1.0,
+      "bin": "INSEP"
+    },
+    "55": {
+      "seed": 55,
+      "full_fp": 77.31,
+      "acc_fp": 78.3203125,
+      "acc_5": 76.5625,
+      "rho": {
+        "conv1": 0.00913732296072072,
+        "conv2_x": 0.1563398124472947,
+        "conv3_x": 0.1959447827885061,
+        "conv4_x": 0.20881424711020108,
+        "conv5_x": 0.17549362054119858,
+        "avg_pool": 0.1507523210868677,
+        "fc": 0.1834092072460116
+      },
+      "in_dis": false,
+      "hygiene": true,
+      "dpp": -1.7578125,
+      "jk_se": 0.8925286153326124,
+      "ci95": [
+        -3.515625,
+        0.0
+      ],
+      "hurt": 15,
+      "helped": 6,
+      "p_mc": 0.0783538818359375,
+      "bin": "INSEP"
+    },
+    "89": {
+      "seed": 89,
+      "full_fp": 78.03,
+      "acc_fp": 79.8828125,
+      "acc_5": 77.1484375,
+      "rho": {
+        "conv1": 0.01096835470992232,
+        "conv2_x": 1.6363635655145707,
+        "conv3_x": 12.117595562000366,
+        "conv4_x": 5.214240024466827,
+        "conv5_x": 2.8446668867522926,
+        "avg_pool": 0.25025695047460317,
+        "fc": 0.8696865889878042
+      },
+      "in_dis": false,
+      "hygiene": true,
+      "dpp": -2.734375,
+      "jk_se": 1.0274111951466807,
+      "ci95": [
+        -4.6875,
+        -0.78125
+      ],
+      "hurt": 21,
+      "helped": 7,
+      "p_mc": 0.012540951371192932,
+      "bin": "INSEP"
+    }
+  },
+  "holds": [],
+  "fails": [],
+  "inseps": [
+    13,
+    21,
+    34,
+    55,
+    89
+  ],
+  "k_clear_fail": 0,
+  "spearman_conv3_vs_dpp": {
+    "r": -0.19999999999999998,
+    "p": 0.747060078104662
+  },
+  "hygiene_all": true,
+  "verdict": "G12_RATE_ZERO",
+  "paper_sentence": "0/5 CLEAR_FAIL on this recipe. The Paper 4 5678 miss did not replicate here. Do not claim a seed failure rate. Recipe difference stays live."
+}

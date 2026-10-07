@@ -1,0 +1,9 @@
+{
+  "written_at_utc": "2026-09-06T08:11:51.830882+00:00",
+  "weight": "/content/drive/MyDrive/Paper5_DNN_Neurosim/weights/vgg8_cifar10.pth",
+  "n_eval": 512,
+  "acc_fp": 91.015625,
+  "accept": 90.015625,
+  "min_viable_adc": 5,
+  "primary_ref": "vgg8_cifar10_paper3.pth min_viable=5 adc5_dpp=-0.195"
+}

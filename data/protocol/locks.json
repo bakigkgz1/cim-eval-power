@@ -1,0 +1,290 @@
+{
+  "locked_at_utc": "2026-09-05T00:59:27.447903+00:00",
+  "paper": "Paper5",
+  "title": "Argmax Hides Analog Error",
+  "runtime": "Colab Pro, fixed T4",
+  "step0a": "PASS",
+  "gateA": "PASS",
+  "cim": {
+    "subarray": [
+      128,
+      128
+    ],
+    "cell": "binary_resistive",
+    "parallel_read": 64,
+    "weight_bits": 8,
+    "input_bits": 8,
+    "read_noise": 0.0,
+    "device_variation_primary": false,
+    "calib_seed": 1234,
+    "swept_variable": "adc_precision",
+    "hardware": 0,
+    "output_noise": 0.0,
+    "first_layer": "quantized"
+  },
+  "acceptance": {
+    "classification": "FP32 top-1 within 1.0 pp",
+    "segmentation": "FP32 mIoU within 0.01",
+    "denoise_sr": "FP32 PSNR within 0.5 dB",
+    "locked_before_campaign": true
+  },
+  "networks": [
+    "ResNet-18",
+    "VGG8",
+    "U-Net bilinear",
+    "DnCNN",
+    "ESPCN or EDSR-baseline"
+  ],
+  "excluded": [
+    "FSRCNN",
+    "U-Net ConvTranspose2d"
+  ],
+  "step2a_dncnn_set12": "PASS",
+  "fp_ceilings": {
+    "dncnn_s25_set12": {
+      "metric": "PSNR_uint8_border0",
+      "value_dB": 30.269490624425305,
+      "paper_dB": 30.44,
+      "delta_vs_paper_dB": -0.1705093755746958,
+      "acceptance_dB": 29.769490624425305,
+      "rule": "measured_FP_minus_0.5dB",
+      "ssim_mean": 0.8495467715862802,
+      "weight": "KAIR dncnn_25.pth",
+      "weight_url": "https://github.com/cszn/KAIR/releases/download/v1.0/dncnn_25.pth",
+      "noise": "numpy seed=0, sigma=25/255, per-image reset",
+      "residual": "inside_model",
+      "bn": "merged",
+      "note": "0.17 dB below TIP2017 is MATLAB vs numpy RNG; do not chase 30.44"
+    },
+    "vgg8_cifar10": {
+      "metric": "top1",
+      "value": 90.19,
+      "accept_if_within_pp": 1.0,
+      "weight": "/content/drive/MyDrive/Paper5_DNN_Neurosim/weights/vgg8_cifar10_paper3.pth",
+      "source": "NeuroSim15v_paper3/models/vgg8_cifar10.pth",
+      "second_checkpoint": "/content/drive/MyDrive/Paper5_DNN_Neurosim/weights/vgg8_cifar10.pth",
+      "second_top1": 90.31
+    },
+    "resnet18_cifar100": {
+      "metric": "top1",
+      "value": 78.02,
+      "accept_if_within_pp": 1.0,
+      "weight": "/content/drive/MyDrive/Paper5_DNN_Neurosim/weights/resnet18_cifar100_primary.pth",
+      "source": "/content/drive/MyDrive/NeuroSim15v_paper4/models/resnet18_cifar100_seed5678.pth",
+      "norm": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "note": "NeuroSim dataset.py CIFAR-100 mean/std does NOT match these ckpts; lock 0.5-norm",
+      "second_checkpoint": "/content/drive/MyDrive/Paper5_DNN_Neurosim/weights/resnet18_cifar100_paper3.pth",
+      "second_top1_0p5norm": 72.93,
+      "paper3_paper4_main_are_identical_hash": "bbb333da42d2"
+    },
+    "unet_bilinear_oxfordpet": {
+      "metric": "mIoU_3class",
+      "value": 0.7293068947509574,
+      "accept_if_within": 0.01,
+      "accept": 0.7193068947509574,
+      "miou_pet_vs_bg_ignore_border": 0.8988547404504181,
+      "n_test": 3669,
+      "size": 128,
+      "weight": "/content/drive/MyDrive/Paper5_DNN_Neurosim/weights/unet_bilinear_oxfordpet.pth",
+      "norm": {
+        "mean": [
+          0.485,
+          0.456,
+          0.406
+        ],
+        "std": [
+          0.229,
+          0.224,
+          0.225
+        ]
+      },
+      "label_map": "mask-1: 0=pet, 1=bg, 2=border",
+      "epochs": 15,
+      "seed": 1234,
+      "published_ckpt": false,
+      "discarded_false_ceiling": 0.041
+    },
+    "msrresnet_x4_set5": {
+      "metric": "PSNR_Y_KAIR_border4",
+      "value_dB": 32.2079343175961,
+      "literature_dB": 32.21,
+      "delta_vs_lit": -0.002065682403902258,
+      "bicubic_dB": 28.4196913095109,
+      "accept_if_within_dB": 0.5,
+      "accept": 31.7079343175961,
+      "n": 5,
+      "weight": "/content/drive/MyDrive/Paper5_DNN_Neurosim/weights/msrresnet_x4_psnr.pth",
+      "lr": "KAIR imresize_np MATLAB bicubic x4",
+      "discarded_opencv": [
+        27.728,
+        23.563
+      ],
+      "convtranspose": 0
+    }
+  },
+  "cim_smoke_01_64": {
+    "status": "logged_not_a_gate",
+    "psnr_fp": 28.838935133901536,
+    "psnr_adc_off": 28.54595102470336,
+    "psnr_adc5": 16.58898531097549,
+    "dpsnr_off": -0.2929841091981764,
+    "dpsnr_adc5": -12.249949822926045,
+    "note": "one center 64x64 of Set12/01.png; not a campaign result; ADC-off isolates I/W; ADC-5 is the swept variable"
+  },
+  "gateB": "PASS",
+  "gateB_dncnn_set12_crop64": {
+    "mean_fp_crop_dB": 29.059871319917363,
+    "accept_dB": 28.559871319917363,
+    "min_viable_adc": 6,
+    "adc_off_mean_dpsnr": -0.306,
+    "adc4_mean_dpsnr": -23.587,
+    "adc5_mean_dpsnr": -19.961,
+    "adc6_to_12": "identical to adc_off under hardware=0",
+    "interpretation": "V1.5 hardware=0 ADC is clamp(partial_sum, 0, 2**bits). parallel_read=64 => 2**6=64 is the no-clip floor. Do not treat 7-12 as finer ADC.",
+    "outlier": "09.png adc_off dPSNR=-0.941; mean rule still passes",
+    "scope": "published KAIR dncnn_25, Set12 center 64x64, sigma=25, numpy seed=0"
+  },
+  "step2c_vgg8": "PASS",
+  "gateB_clf": "PASS",
+  "min_viable_adc": {
+    "classification_vgg8_cifar10_n512": 5,
+    "denoise_dncnn_set12_crop64": 6,
+    "note": "ADC=5 graded: VGG8 holds; ResNet \u22123.7 pp; U-Net \u22120.30 mIoU; DnCNN \u221220 dB; MSRResNet \u221224.6 dB. Pixel argmax \u2260 image argmax. No-argmax tasks both collapse. 6\u201312 == adc_off (hardware=0 clamp).",
+    "classification_resnet18_cifar100_n512": 6,
+    "segmentation_unet_oxfordpet_n128": 6,
+    "sr_msrresnet_set5_x4": 6
+  },
+  "gateB_clf_vgg8": {
+    "n": 512,
+    "acc_fp": 91.6015625,
+    "min_viable_adc": 5,
+    "adc4_dpp": -82.031,
+    "adc5_dpp": -0.195,
+    "adc_off_dpp": -0.195,
+    "first_layer_quantized": true,
+    "weight": "vgg8_cifar10_paper3.pth"
+  },
+  "step2d_resnet18": "PASS",
+  "gateB_clf2": "PASS",
+  "gateB_clf2_resnet18": {
+    "n": 512,
+    "acc_fp": 78.125,
+    "min_viable_adc": 6,
+    "adc_off_acc": 78.711,
+    "adc_off_dpp": 0.586,
+    "adc4_acc": 0.977,
+    "adc4_dpp": -77.148,
+    "adc5_acc": 74.414,
+    "adc5_dpp": -3.711,
+    "adc5_pass_1pp": false,
+    "adc6_to_12": "same as off",
+    "first_layer_quantized": true,
+    "norm": [
+      0.5,
+      0.5,
+      0.5
+    ],
+    "weight": "resnet18_cifar100_primary.pth"
+  },
+  "headline_so_far": "min-viable ADC: VGG8=5 (both ckpts), ResNet=6, U-Net=6, DnCNN=6, MSRResNet=6. ADC=5: VGG8 holds on two ckpts (\u22120.20 / \u22120.59 pp); ResNet \u22123.7 pp; U-Net \u22120.30 mIoU; DnCNN \u221220 dB (full \u221224 dB); SR \u221224.6 dB. Pixel argmax \u2260 image argmax. 6-bit floor is clamp. Do not claim classification=5 vs dense=6. Do not claim 128x128 tiling.",
+  "gateC_hw1": "PASS",
+  "gateC_hw1_dncnn_01_64": {
+    "image": "01.png",
+    "crop": 64,
+    "origin_yx": [
+      96,
+      96
+    ],
+    "psnr_fp": 28.838935133901536,
+    "hw0_off_dpsnr": -0.293,
+    "hw0_5_dpsnr": -12.25,
+    "hw0_6_dpsnr": -0.293,
+    "hw1_off_dpsnr": -0.293,
+    "hw1_5_dpsnr": -12.25,
+    "hw1_6_dpsnr": -0.293,
+    "hw1_12_dpsnr": -0.293,
+    "hw1_minus_hw0_at_6": 0.0,
+    "variation": "off",
+    "read_noise": 0.0,
+    "output_noise": 0.0,
+    "v": 0.0,
+    "note": "hardware=1 ADC_output ran (~1s vs 0.5s) but PSNR/SSIM match hardware=0 to reported precision. ADC=6 == ADC-off on both paths. Floor is 2**bits clamp vs parallel_read=64, not analog sensing."
+  },
+  "step2e_unet": "PASS",
+  "gateB_seg": "PASS",
+  "gateB_seg_unet": {
+    "n": 128,
+    "miou_fp": 0.7148887744604034,
+    "min_viable_adc": 6,
+    "adc_off_miou": 0.7121,
+    "adc_off_dmiou": -0.0028,
+    "adc4_miou": 0.0444,
+    "adc4_dmiou": -0.6705,
+    "adc5_miou": 0.4152,
+    "adc5_dmiou": -0.2997,
+    "adc5_pass_0p01": false,
+    "adc6_to_12": "same as off",
+    "first_layer_quantized": true,
+    "upsample": "bilinear",
+    "weight": "unet_bilinear_oxfordpet.pth"
+  },
+  "step2f_sr": "PASS",
+  "gateB_sr": "PASS",
+  "gateB_sr_msrresnet": {
+    "n": 5,
+    "psnr_fp": 32.2079343175961,
+    "min_viable_adc": 6,
+    "adc_off_dpsnr": -0.094,
+    "adc4_dpsnr": -26.78,
+    "adc5_dpsnr": -24.592,
+    "adc5_pass_0p5": false,
+    "adc6_to_12": "same as off",
+    "first_layer_quantized": true,
+    "pixelshuffle_fp": true,
+    "lr": "KAIR imresize_np",
+    "weight": "msrresnet_x4_psnr.pth"
+  },
+  "dncnn_01_full": {
+    "status": "logged_not_a_gate",
+    "shape": [
+      256,
+      256
+    ],
+    "psnr_fp": 30.207588998344065,
+    "dpsnr_off": -0.2933579434166198,
+    "dpsnr_adc5": -24.303549228221353,
+    "dpsnr_adc6": -0.2933579434166198,
+    "adc6_eq_off": true,
+    "crop_smoke_dpsnr_off": -0.293,
+    "crop_smoke_dpsnr_adc5": -12.25,
+    "note": "off delta matches crop; ADC=5 is worse on full 256 than on 64 crop. Crop protocol did not invent the cliff."
+  },
+  "gateD_errmap": "LOGGED",
+  "gateD_errmap_01": {
+    "status": "logged_not_a_headline",
+    "err_rmse": 21.968252182006836,
+    "tile_mean_std_err": 0.5311131949374741,
+    "tile_mean_std_ctrl": 0.06677385441989535,
+    "boundary_over_interior_err": 0.7868501608550572,
+    "boundary_over_interior_ctrl": 1.0127985752524182,
+    "control": "spatial permutation of the same error values (RMSE-exact)",
+    "claim": "Do not claim 128x128 subarray tiling. Error is a large negative bias (RMSE 22). Boundaries are milder than interiors (0.79 vs ctrl 1.01). Tile-mean std is higher than shuffle but all four tiles are collapsed (~20 MAE)."
+  },
+  "gateB_clf_r": "PASS",
+  "gateB_clf_vgg8_ckpt2": {
+    "n": 512,
+    "acc_fp": 91.015625,
+    "min_viable_adc": 5,
+    "adc_off_dpp": -0.391,
+    "adc4_dpp": -81.055,
+    "adc5_dpp": -0.586,
+    "adc5_pass_1pp": true,
+    "adc6_to_12": "same as off",
+    "weight": "vgg8_cifar10.pth",
+    "primary": "vgg8_cifar10_paper3.pth min_viable=5 adc5_dpp=-0.195"
+  }
+}
