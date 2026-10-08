@@ -1,0 +1,42 @@
+{
+  "13": {
+    "best_full_test_acc": 69.98,
+    "weight": "vgg8_cifar100_seed13.pth",
+    "sha12": "7382666a8776",
+    "epochs": 200,
+    "gpu": "NVIDIA A100-SXM4-40GB",
+    "tf32": false
+  },
+  "21": {
+    "best_full_test_acc": 69.28,
+    "weight": "vgg8_cifar100_seed21.pth",
+    "sha12": "09d3c6eb57ab",
+    "epochs": 200,
+    "gpu": "NVIDIA A100-SXM4-40GB",
+    "tf32": false
+  },
+  "34": {
+    "best_full_test_acc": 69.54,
+    "weight": "vgg8_cifar100_seed34.pth",
+    "sha12": "383f1b87fe2f",
+    "epochs": 200,
+    "gpu": "NVIDIA A100-SXM4-40GB",
+    "tf32": false
+  },
+  "55": {
+    "best_full_test_acc": 69.1,
+    "weight": "vgg8_cifar100_seed55.pth",
+    "sha12": "3e4a8c4b7bf6",
+    "epochs": 200,
+    "gpu": "NVIDIA A100-SXM4-40GB",
+    "tf32": false
+  },
+  "89": {
+    "best_full_test_acc": 69.3,
+    "weight": "vgg8_cifar100_seed89.pth",
+    "sha12": "6a3d9601b955",
+    "epochs": 200,
+    "gpu": "NVIDIA A100-SXM4-40GB",
+    "tf32": false
+  }
+}

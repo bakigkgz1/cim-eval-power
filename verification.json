@@ -362,5 +362,75 @@
   "hurt": 1,
   "helped": 0,
   "verdict": "hold"
+ },
+ {
+  "file": "data/results/fulltest10k/c100_vgg8/logits_vgg8c100_s13_n10000.pt",
+  "n": 10000,
+  "acc_fp": 69.98,
+  "acc_clip": 68.29,
+  "delta_pp": -1.69,
+  "ci95": [
+   -2.1,
+   -1.29
+  ],
+  "hurt": 300,
+  "helped": 131,
+  "verdict": "fail"
+ },
+ {
+  "file": "data/results/fulltest10k/c100_vgg8/logits_vgg8c100_s21_n10000.pt",
+  "n": 10000,
+  "acc_fp": 69.28,
+  "acc_clip": 66.65,
+  "delta_pp": -2.63,
+  "ci95": [
+   -3.07,
+   -2.2
+  ],
+  "hurt": 377,
+  "helped": 114,
+  "verdict": "fail"
+ },
+ {
+  "file": "data/results/fulltest10k/c100_vgg8/logits_vgg8c100_s34_n10000.pt",
+  "n": 10000,
+  "acc_fp": 69.54,
+  "acc_clip": 61.73,
+  "delta_pp": -7.81,
+  "ci95": [
+   -8.5,
+   -7.15
+  ],
+  "hurt": 1023,
+  "helped": 242,
+  "verdict": "fail"
+ },
+ {
+  "file": "data/results/fulltest10k/c100_vgg8/logits_vgg8c100_s55_n10000.pt",
+  "n": 10000,
+  "acc_fp": 69.1,
+  "acc_clip": 60.17,
+  "delta_pp": -8.93,
+  "ci95": [
+   -9.64,
+   -8.25
+  ],
+  "hurt": 1111,
+  "helped": 218,
+  "verdict": "fail"
+ },
+ {
+  "file": "data/results/fulltest10k/c100_vgg8/logits_vgg8c100_s89_n10000.pt",
+  "n": 10000,
+  "acc_fp": 69.3,
+  "acc_clip": 67.59,
+  "delta_pp": -1.71,
+  "ci95": [
+   -2.13,
+   -1.29
+  ],
+  "hurt": 315,
+  "helped": 144,
+  "verdict": "fail"
  }
 ]

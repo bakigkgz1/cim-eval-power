@@ -20,6 +20,7 @@ All results were produced with DNN+NeuroSim V1.5 at one fixed operating point:
 | Swept field | ADC precision b (acts as a partial-sum clip at 2^b; b ≥ 6 is identical to no clipping) |
 | Compared arms | floating point (FP) vs. 2^5 clip |
 | Calibration set | 256 images |
+| Hosts | Tesla T4 (ResNet-18, VGG8/C10); A100 with TF32 disabled (VGG8/C100) |
 | Seed | 1234 |
 
 ## Repository layout
@@ -33,7 +34,8 @@ data/
     analog_kernel_check/         hardware = 1 (noise off) vs. hardware = 0 check
     window512/                   FP and 2^5-clip logits on the first 512 test images
     fulltest10k/c10/             FP and 2^5-clip logits, full CIFAR-10 test set (4 checkpoints)
-    fulltest10k/c100/            FP and 2^5-clip logits, full CIFAR-100 test set (6 checkpoints)
+    fulltest10k/c100/            FP and 2^5-clip logits, full CIFAR-100 test set (6 ResNet-18 checkpoints)
+    fulltest10k/c100_vgg8/       FP and 2^5-clip logits, full CIFAR-100 test set (5 VGG8 checkpoints) + G15 summaries
     screens/                     pre-clip overflow rates and stage-wise residual ratios (Table 7)
     training/                    training summaries of the five matched-seed CIFAR-100 weights
     supplementary/               full-test CIFAR-100 logits under a 50 000-image calibration set
@@ -65,6 +67,7 @@ Next to every `.pt` file there is a `*_per_image.csv` with the columns
 | `resnet_c10_5678` | ResNet-18/C10 s5678 |
 | `s13`, `s21`, `s34`, `s55`, `s89` | ResNet-18/C100 matched-recipe seeds |
 | `P4` | ResNet-18/C100 s5678 |
+| `vgg8c100_s13` … `vgg8c100_s89` | VGG8/C100 matched-recipe seeds (trained with the same recipe and seeds as the ResNet-18/C100 weights) |
 
 ## Reproducing the paper's numbers
 
@@ -89,6 +92,11 @@ The script prints the paired accuracy change, its 95% bootstrap interval (B = 10
 | ResNet-18/C100 s21 | 77.66 | 75.73 | −1.93 | [−2.36, −1.52] | 326/133 | fail |
 | ResNet-18/C100 s89 | 78.03 | 75.66 | −2.37 | [−2.79, −1.96] | 344/107 | fail |
 | ResNet-18/C100 s5678 | 78.02 | 74.32 | −3.70 | [−4.21, −3.21] | 516/146 | fail |
+| VGG8/C100 s13 | 69.98 | 68.29 | −1.69 | [−2.10, −1.28] | 300/131 | fail |
+| VGG8/C100 s21 | 69.28 | 66.65 | −2.63 | [−3.05, −2.21] | 377/114 | fail |
+| VGG8/C100 s34 | 69.54 | 61.73 | −7.81 | [−8.49, −7.14] | 1023/242 | fail |
+| VGG8/C100 s55 | 69.10 | 60.17 | −8.93 | [−9.62, −8.22] | 1111/218 | fail |
+| VGG8/C100 s89 | 69.30 | 67.59 | −1.71 | [−2.13, −1.28] | 315/144 | fail |
 
 ## Data sources
 
