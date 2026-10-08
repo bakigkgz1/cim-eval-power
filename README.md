@@ -20,7 +20,7 @@ All results were produced with DNN+NeuroSim V1.5 at one fixed operating point:
 | Swept field | ADC precision b (acts as a partial-sum clip at 2^b; b ≥ 6 is identical to no clipping) |
 | Compared arms | floating point (FP) vs. 2^5 clip |
 | Calibration set | 256 images |
-| Hosts | Tesla T4 (ResNet-18, VGG8/C10); A100 with TF32 disabled (VGG8/C100) |
+| Hosts | Tesla T4 (ResNet-18, VGG8/C10); A100 with TF32 disabled (VGG8/C100, VGG8/C10m) |
 | Seed | 1234 |
 
 ## Repository layout
@@ -36,10 +36,12 @@ data/
     fulltest10k/c10/             FP and 2^5-clip logits, full CIFAR-10 test set (4 checkpoints)
     fulltest10k/c100/            FP and 2^5-clip logits, full CIFAR-100 test set (6 ResNet-18 checkpoints)
     fulltest10k/c100_vgg8/       FP and 2^5-clip logits, full CIFAR-100 test set (5 VGG8 checkpoints) + G15 summaries
+    fulltest10k/c10m_vgg8/       FP and 2^5-clip logits, full CIFAR-10 test set (5 accuracy-matched VGG8 checkpoints) + G16 summaries
     screens/                     pre-clip overflow rates and stage-wise residual ratios (Table 7)
     training/                    training summaries of the five matched-seed CIFAR-100 weights
     supplementary/               full-test CIFAR-100 logits under a 50 000-image calibration set
 power_audit.py                   paired verdict, sample-size rule, subsampling reliability
+sequential_audit.py              group-sequential and confidence-sequence evaluation (Table 10)
 verification.json                every Table 4 entry recomputed from the raw logits
 MANIFEST.csv                     every file with size and SHA-256 checksum
 ```
@@ -68,6 +70,7 @@ Next to every `.pt` file there is a `*_per_image.csv` with the columns
 | `s13`, `s21`, `s34`, `s55`, `s89` | ResNet-18/C100 matched-recipe seeds |
 | `P4` | ResNet-18/C100 s5678 |
 | `vgg8c100_s13` … `vgg8c100_s89` | VGG8/C100 matched-recipe seeds (trained with the same recipe and seeds as the ResNet-18/C100 weights) |
+| `vgg8c10low_s13` … `vgg8c10low_s89` | VGG8/C10m: CIFAR-10, same recipe and seeds, trained on a fixed class-balanced 3 000-image subset to match the FP accuracy of VGG8/C100 |
 
 ## Reproducing the paper's numbers
 
@@ -76,7 +79,9 @@ pip install numpy scipy
 python power_audit.py data/results/fulltest10k/c100/logits_s13_n10000_per_image.csv --tau 1.0
 ```
 
-The script prints the paired accuracy change, its 95% bootstrap interval (B = 10 000, seed 1234), the hurt/helped counts, the exact McNemar p-value, the verdict against the allowance τ, the evaluation size required by the closed-form rule, and the share of random n-image subsets that reproduce the full-test verdict.
+`python sequential_audit.py .` reproduces Table 10 (1 000 random orderings per checkpoint; a few minutes on a laptop).
+
+The `power_audit.py` script prints the paired accuracy change, its 95% bootstrap interval (B = 10 000, seed 1234), the hurt/helped counts, the exact McNemar p-value, the verdict against the allowance τ, the evaluation size required by the closed-form rule, and the share of random n-image subsets that reproduce the full-test verdict.
 
 ### Verification summary (full 10 000-image test set, 2^5 clip, τ = 1 pp)
 
@@ -92,11 +97,16 @@ The script prints the paired accuracy change, its 95% bootstrap interval (B = 10
 | ResNet-18/C100 s21 | 77.66 | 75.73 | −1.93 | [−2.36, −1.52] | 326/133 | fail |
 | ResNet-18/C100 s89 | 78.03 | 75.66 | −2.37 | [−2.79, −1.96] | 344/107 | fail |
 | ResNet-18/C100 s5678 | 78.02 | 74.32 | −3.70 | [−4.21, −3.21] | 516/146 | fail |
-| VGG8/C100 s13 | 69.98 | 68.29 | −1.69 | [−2.10, −1.28] | 300/131 | fail |
-| VGG8/C100 s21 | 69.28 | 66.65 | −2.63 | [−3.05, −2.21] | 377/114 | fail |
-| VGG8/C100 s34 | 69.54 | 61.73 | −7.81 | [−8.49, −7.14] | 1023/242 | fail |
-| VGG8/C100 s55 | 69.10 | 60.17 | −8.93 | [−9.62, −8.22] | 1111/218 | fail |
-| VGG8/C100 s89 | 69.30 | 67.59 | −1.71 | [−2.13, −1.28] | 315/144 | fail |
+| VGG8/C100 s13 | 69.98 | 68.29 | −1.69 | [−2.10, −1.29] | 300/131 | fail |
+| VGG8/C100 s21 | 69.28 | 66.65 | −2.63 | [−3.07, −2.20] | 377/114 | fail |
+| VGG8/C100 s34 | 69.54 | 61.73 | −7.81 | [−8.50, −7.15] | 1023/242 | fail |
+| VGG8/C100 s55 | 69.10 | 60.17 | −8.93 | [−9.64, −8.25] | 1111/218 | fail |
+| VGG8/C100 s89 | 69.30 | 67.59 | −1.71 | [−2.13, −1.29] | 315/144 | fail |
+| VGG8/C10m s13 | 66.53 | 66.52 | −0.01 | [−0.29, 0.28] | 106/105 | hold |
+| VGG8/C10m s21 | 69.41 | 69.30 | −0.11 | [−0.32, 0.10] | 62/51 | hold |
+| VGG8/C10m s34 | 69.07 | 68.89 | −0.18 | [−0.36, 0.00] | 50/32 | hold |
+| VGG8/C10m s55 | 68.76 | 68.60 | −0.16 | [−0.36, 0.04] | 62/46 | hold |
+| VGG8/C10m s89 | 67.22 | 66.29 | −0.93 | [−1.31, −0.54] | 243/150 | unresolved |
 
 ## Data sources
 

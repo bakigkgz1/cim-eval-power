@@ -1,0 +1,335 @@
+{
+  "gate": "G16",
+  "gpu": "NVIDIA A100-SXM4-40GB",
+  "tf32": false,
+  "n_sub": 3000,
+  "subset_seed": 2026,
+  "scan": {
+    "2000": 60.5,
+    "3000": 66.53,
+    "4500": 75.04
+  },
+  "protocol": "G15b (256 calib, clip 2^5)",
+  "rows": {
+    "s13": {
+      "sha12": "a80a2bdf5337",
+      "acc_fp": 66.53,
+      "acc_clip5": 66.52,
+      "full10k": {
+        "n": 10000,
+        "dpp": -0.01,
+        "ci95": [
+          -0.30000000000000027,
+          0.27000000000000357
+        ],
+        "hurt": 106,
+        "helped": 105,
+        "disc": 0.0211,
+        "p_mc": 1.0,
+        "bin": "HOLD"
+      },
+      "window512": {
+        "n": 512,
+        "dpp": -1.3671875,
+        "ci95": [
+          -2.734375,
+          0.0
+        ],
+        "hurt": 10,
+        "helped": 3,
+        "disc": 0.025390625,
+        "p_mc": 0.09228515625,
+        "bin": "UNRESOLVED"
+      },
+      "n_req_80": 1689.7383748511625,
+      "hygiene": true,
+      "wall_s": 202.60116147994995,
+      "algorithm1": {
+        "gamma_0.7": {
+          "pilot_disc": 0.025390625,
+          "n_planned": 4038,
+          "n_used": 4038,
+          "capped": false,
+          "verdict": "HOLD",
+          "dpp": -0.12382367508667658,
+          "ci95": [
+            -0.5943536404160454,
+            0.32194155522535794
+          ],
+          "agrees_with_full": true
+        },
+        "gamma_1.0": {
+          "pilot_disc": 0.025390625,
+          "n_planned": 1979,
+          "n_used": 1979,
+          "capped": false,
+          "verdict": "HOLD",
+          "dpp": 0.0,
+          "ci95": [
+            -0.5558362809499728,
+            0.5558362809499839
+          ],
+          "agrees_with_full": true
+        }
+      }
+    },
+    "s21": {
+      "sha12": "afc6f460bc29",
+      "acc_fp": 69.41000000000001,
+      "acc_clip5": 69.3,
+      "full10k": {
+        "n": 10000,
+        "dpp": -0.11,
+        "ci95": [
+          -0.31999999999999806,
+          0.10000000000000009
+        ],
+        "hurt": 62,
+        "helped": 51,
+        "disc": 0.0113,
+        "p_mc": 0.34689310509533516,
+        "bin": "HOLD"
+      },
+      "window512": {
+        "n": 512,
+        "dpp": -0.1953125,
+        "ci95": [
+          -1.171875,
+          0.78125
+        ],
+        "hurt": 4,
+        "helped": 3,
+        "disc": 0.013671875,
+        "p_mc": 1.0,
+        "bin": "UNRESOLVED"
+      },
+      "n_req_80": 1119.5913400472505,
+      "hygiene": true,
+      "wall_s": 201.0795431137085,
+      "algorithm1": {
+        "gamma_0.7": {
+          "pilot_disc": 0.013671875,
+          "n_planned": 2190,
+          "n_used": 2190,
+          "capped": false,
+          "verdict": "HOLD",
+          "dpp": -0.228310502283105,
+          "ci95": [
+            -0.6849315068493178,
+            0.22831050228310223
+          ],
+          "agrees_with_full": true
+        },
+        "gamma_1.0": {
+          "pilot_disc": 0.013671875,
+          "n_planned": 1073,
+          "n_used": 1073,
+          "capped": false,
+          "verdict": "UNRESOLVED",
+          "dpp": -0.8387698042870456,
+          "ci95": [
+            -1.491146318732528,
+            -0.18639328984156878
+          ],
+          "agrees_with_full": false
+        }
+      }
+    },
+    "s34": {
+      "sha12": "9e6c4d05d38b",
+      "acc_fp": 69.07,
+      "acc_clip5": 68.89,
+      "full10k": {
+        "n": 10000,
+        "dpp": -0.18,
+        "ci95": [
+          -0.35999999999999366,
+          0.0
+        ],
+        "hurt": 50,
+        "helped": 32,
+        "disc": 0.0082,
+        "p_mc": 0.059808338334316175,
+        "bin": "HOLD"
+      },
+      "window512": {
+        "n": 512,
+        "dpp": -0.390625,
+        "ci95": [
+          -0.9765625,
+          0.0
+        ],
+        "hurt": 2,
+        "helped": 0,
+        "disc": 0.00390625,
+        "p_mc": 0.5,
+        "bin": "HOLD"
+      },
+      "n_req_80": 956.802103418581,
+      "hygiene": true,
+      "wall_s": 201.8729727268219,
+      "algorithm1": {
+        "gamma_0.7": {
+          "pilot_disc": 0.00390625,
+          "n_planned": 624,
+          "n_used": 624,
+          "capped": false,
+          "verdict": "UNRESOLVED",
+          "dpp": -0.4807692307692308,
+          "ci95": [
+            -1.2820512820512775,
+            0.1602564102564097
+          ],
+          "agrees_with_full": false
+        },
+        "gamma_1.0": {
+          "pilot_disc": 0.00390625,
+          "n_planned": 306,
+          "n_used": 512,
+          "capped": false,
+          "verdict": "HOLD",
+          "dpp": 0.0,
+          "ci95": [
+            -0.5859375,
+            0.5859375
+          ],
+          "agrees_with_full": true
+        }
+      }
+    },
+    "s55": {
+      "sha12": "9491a5f4fb2d",
+      "acc_fp": 68.76,
+      "acc_clip5": 68.60000000000001,
+      "full10k": {
+        "n": 10000,
+        "dpp": -0.16,
+        "ci95": [
+          -0.36999999999999256,
+          0.04999999999999449
+        ],
+        "hurt": 62,
+        "helped": 46,
+        "disc": 0.0108,
+        "p_mc": 0.14857634761056238,
+        "bin": "HOLD"
+      },
+      "window512": {
+        "n": 512,
+        "dpp": -0.390625,
+        "ci95": [
+          -1.3671875,
+          0.5859375
+        ],
+        "hurt": 4,
+        "helped": 2,
+        "disc": 0.01171875,
+        "p_mc": 0.6875,
+        "bin": "UNRESOLVED"
+      },
+      "n_req_80": 1201.0741893854695,
+      "hygiene": true,
+      "wall_s": 202.07484436035156,
+      "algorithm1": {
+        "gamma_0.7": {
+          "pilot_disc": 0.01171875,
+          "n_planned": 1875,
+          "n_used": 1875,
+          "capped": false,
+          "verdict": "HOLD",
+          "dpp": -0.05333333333333334,
+          "ci95": [
+            -0.47999999999999154,
+            0.32000000000000917
+          ],
+          "agrees_with_full": true
+        },
+        "gamma_1.0": {
+          "pilot_disc": 0.01171875,
+          "n_planned": 919,
+          "n_used": 919,
+          "capped": false,
+          "verdict": "HOLD",
+          "dpp": -0.1088139281828074,
+          "ci95": [
+            -0.9793253536452662,
+            0.7616974972796453
+          ],
+          "agrees_with_full": true
+        }
+      }
+    },
+    "s89": {
+      "sha12": "a2b0c7ca5c80",
+      "acc_fp": 67.22,
+      "acc_clip5": 66.29,
+      "full10k": {
+        "n": 10000,
+        "dpp": -0.93,
+        "ci95": [
+          -1.319999999999999,
+          -0.539999999999996
+        ],
+        "hurt": 243,
+        "helped": 150,
+        "disc": 0.0393,
+        "p_mc": 3.1405485399111612e-06,
+        "bin": "UNRESOLVED"
+      },
+      "window512": {
+        "n": 512,
+        "dpp": -0.78125,
+        "ci95": [
+          -2.5390625,
+          0.78125
+        ],
+        "hurt": 11,
+        "helped": 7,
+        "disc": 0.03515625,
+        "p_mc": 0.480682373046875,
+        "bin": "UNRESOLVED"
+      },
+      "n_req_80": 628126.6857712666,
+      "hygiene": true,
+      "wall_s": 201.28867387771606,
+      "algorithm1": {
+        "gamma_0.7": {
+          "pilot_disc": 0.03515625,
+          "n_planned": 5622,
+          "n_used": 5622,
+          "capped": false,
+          "verdict": "UNRESOLVED",
+          "dpp": -0.7648523657061544,
+          "ci95": [
+            -1.2806830309498474,
+            -0.24902170046247063
+          ],
+          "agrees_with_full": true
+        },
+        "gamma_1.0": {
+          "pilot_disc": 0.03515625,
+          "n_planned": 2755,
+          "n_used": 2755,
+          "capped": false,
+          "verdict": "UNRESOLVED",
+          "dpp": -0.6896551724137931,
+          "ci95": [
+            -1.415607985480949,
+            0.03629764065335994
+          ],
+          "agrees_with_full": true
+        }
+      }
+    }
+  },
+  "matched_contrast": {
+    "c100_fail": 5,
+    "low_fail": 0,
+    "low_hold": 4,
+    "fisher_two_sided": 0.007936507936507938,
+    "mw_delta": 0.007936507936507936,
+    "mw_disc": 0.007936507936507936,
+    "mw_acc": 0.05555555555555555,
+    "cliffs_delta": -1.0
+  }
+}
